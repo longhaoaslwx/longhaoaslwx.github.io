@@ -1,0 +1,2351 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="/cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/hacker原.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/hacker32.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/hacker16.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/hacker.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","width":240,"display":"always","padding":18,"offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"shrinkIn","post_header":"slideLeftIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Nmap（Network Mapper）是一个探测计算机网络上得主机和服务的安全扫描软件，用来扫描网上电脑开放的网络连接端口。确定哪些服务运行在哪些连接端，并且推断计算机运行哪个操作系统（这是亦称 fingerprinting）。它是网络管理员必用的软件之一，以及用以评估网络系统安全。">
+<meta name="keywords" content="kali,工具">
+<meta property="og:type" content="article">
+<meta property="og:title" content="kali工具之Nmap">
+<meta property="og:url" content="https://longhaoaslwx.github.io/post/b40299fc.html">
+<meta property="og:site_name" content="龍之随笔">
+<meta property="og:description" content="Nmap（Network Mapper）是一个探测计算机网络上得主机和服务的安全扫描软件，用来扫描网上电脑开放的网络连接端口。确定哪些服务运行在哪些连接端，并且推断计算机运行哪个操作系统（这是亦称 fingerprinting）。它是网络管理员必用的软件之一，以及用以评估网络系统安全。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/13/8nlQYQ.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/13/8nGNv9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/13/8nJ1sA.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/13/8nYpwt.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/13/8nYSeI.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/13/8ntCu9.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/13/8nt5Ux.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/13/8ntY8S.png">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/13/8nUtmj.png">
+<meta property="og:updated_time" content="2020-03-19T09:48:51.760Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="kali工具之Nmap">
+<meta name="twitter:description" content="Nmap（Network Mapper）是一个探测计算机网络上得主机和服务的安全扫描软件，用来扫描网上电脑开放的网络连接端口。确定哪些服务运行在哪些连接端，并且推断计算机运行哪个操作系统（这是亦称 fingerprinting）。它是网络管理员必用的软件之一，以及用以评估网络系统安全。">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/03/13/8nlQYQ.png">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="龍之随笔" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://longhaoaslwx.github.io/post/b40299fc">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>kali工具之Nmap | 龍之随笔</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3970325a12ea6cbaa2445c288d72b9e0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+ 
+  
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  
+  <!-- live2d娘 -->
+  <script src="/live2d-widget/autoload.js"></script>
+  <!--    类知乎卡片链接   -->
+  <script type="text/javascript" src="/js/src/linkcard.js"></script>
+  <!--     代码块复制功能   -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 知乎卡片 
+  <script type="text/javascript" src="/js/src/linkcard.js"></script>
+  -->
+  <!-- 网站标题欺骗  -->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!--  雪花特效  -->
+  <script type="text/javascript" src="/js/src/snow.js"></script>
+  <!-- <script src="https://lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script> -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">龍之随笔</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">32</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br>分类<span class="badge">10</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">40</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-留言板">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/guestbook/" rel="section"><i class="menu-item-icon fa fa-fw fa-comments"></i> <br>留言板</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-map">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/map/" rel="section"><i class="menu-item-icon fa fa-fw fa-map"></i> <br>访客地图</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-links">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-address-book"></i> <br>网站</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-books">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/books" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>书架</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-movies">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/movies" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>电影</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xvbmdoYW9hc2x3eA==" title="欢迎关注我的GitHub！" aria-label="欢迎关注我的GitHub！"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div class="main-increase">
+            <!-- 一句话+天气预报  -->
+            <script type="text/javascript" src="https://api.uixsj.cn/hitokoto/en.php?code=js"></script>
+            <div id="enhitokoto">
+              <iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tb&skin=sogou" frameborder="0" width="350" height="24" allowtransparency="true"></iframe><br>
+              <script>enhitokoto()</script>             
+            </div>
+          </div>
+
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://longhaoaslwx.github.io/post/b40299fc.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="龍皓">
+      <meta itemprop="description" content="你的时间有限，所以不要浪费时间去过别人的生活">
+      <meta itemprop="image" content="/images/myavatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="龍之随笔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">kali工具之Nmap
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-11 20:46:16" itemprop="dateCreated datePublished" datetime="2020-03-11T20:46:16+08:00">2020-03-11</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-19 17:48:51" itemprop="dateModified" datetime="2020-03-19T17:48:51+08:00">2020-03-19</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/信息安全/" itemprop="url" rel="index"><span itemprop="name">信息安全</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/post/b40299fc.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/post/b40299fc.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/post/b40299fc.html" class="leancloud_visitors" data-flag-title="kali工具之Nmap">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">9.7k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">9 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Nmap（Network Mapper）是一个探测计算机网络上得主机和服务的安全扫描软件，用来扫描网上电脑开放的网络连接端口。确定哪些服务运行在哪些连接端，并且推断计算机运行哪个操作系统（这是亦称 fingerprinting）。它是网络管理员必用的软件之一，以及用以评估网络系统安全。<br><a id="more"></a></p>
+<h2 id="Nmap的使用"><a href="#Nmap的使用" class="headerlink" title="Nmap的使用"></a>Nmap的使用</h2><p>用法：nmap [扫描类型] [选项] {目标规范}</p>
+<h2 id="常见用法"><a href="#常见用法" class="headerlink" title="常见用法"></a>常见用法</h2><h3 id="ping扫描-——-nmap-lt-要扫描的目标ip地址-gt"><a href="#ping扫描-——-nmap-lt-要扫描的目标ip地址-gt" class="headerlink" title="ping扫描 —— nmap &lt;要扫描的目标ip地址&gt;"></a>ping扫描 —— nmap &lt;要扫描的目标ip地址&gt;</h3><p>给个ip地址，直接扫描</p>
+<p>举个栗子：<br><img src="https://s1.ax1x.com/2020/03/13/8nlQYQ.png" alt></p>
+<p>这种扫描方式以及-sP 扫描，检测网络上哪些主机正在运行，通过向指定的IP地址发送ICMP echo请求数据包，收到一个RST包，就表示主机正在运行。 </p>
+<p>后面会讲到多个参数结合使用，一般当扫描主机防火墙打开时，是无法直接扫描的。</p>
+<h3 id="TCP-SYN-Ping扫描"><a href="#TCP-SYN-Ping扫描" class="headerlink" title="TCP SYN Ping扫描"></a>TCP SYN Ping扫描</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">nmap</span> -<span class="built_in">sP</span> -PS &lt; 要扫描的目标<span class="built_in">ip</span>地址&gt;</span><br></pre></td></tr></table></figure>
+<p>举个栗子：<br><img src="https://s1.ax1x.com/2020/03/13/8nGNv9.png" alt><br>对于root用户，-PS 让nmap使用SYN包而不是ACK包来对目标主机进行扫描。如果主机正在运行就返回一个RST包(或者一个SYN/ACK包)。-PS默认在80端口发送TCP SYN数据包；我们还可以指定端口，例如-PS135(指定135)端口。当管理员对TCP SYN数据包中的SYN数据包没有过滤时可绕过</p>
+<h3 id="半开扫描"><a href="#半开扫描" class="headerlink" title="半开扫描"></a>半开扫描</h3><figure class="highlight x86asm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap -<span class="built_in">sS</span> &lt; 要扫描的目标<span class="built_in">ip</span>地址&gt;</span><br></pre></td></tr></table></figure>
+<p>举个栗子：<br><img src="https://s1.ax1x.com/2020/03/13/8nJ1sA.png" alt><br>TCP SYN扫描，意思是，半开式扫描。用户可以发出一个TCP同步包(SYN)，然后等待回应。如果对方返回SYN|ACK(响应)包就表示目标端口正在监听；如果返回RST数据包，就表示目标端口没有监听程序；如果收到一个SYN|ACK包，源主机就会马上发出一个RST(复位)数据包断开和目标主机的连接。该选项扫描的最大好处是，扫描动作极少会被记录，更具有隐蔽性！</p>
+<h3 id="自定义端口扫描"><a href="#自定义端口扫描" class="headerlink" title="自定义端口扫描"></a>自定义端口扫描</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">nmap</span> -P（扫描范围）&lt; 要扫描的目标<span class="built_in">ip</span>地址&gt;</span><br></pre></td></tr></table></figure>
+<p>举个栗子：</p>
+<p><img src="https://s1.ax1x.com/2020/03/13/8nYpwt.png" alt></p>
+<p>也可以针对指定端口扫描</p>
+<p>举个栗子：<br><img src="https://s1.ax1x.com/2020/03/13/8nYSeI.png" alt></p>
+<h3 id="Pn-非ping扫描，不执行主机发现，可以跳过防火墙（常用）"><a href="#Pn-非ping扫描，不执行主机发现，可以跳过防火墙（常用）" class="headerlink" title="-Pn 非ping扫描，不执行主机发现，可以跳过防火墙（常用）"></a>-Pn 非ping扫描，不执行主机发现，可以跳过防火墙（常用）</h3><p><code>nmap -Pn &lt; 要扫描的目标ip地址&gt;</code> 常与其他命令联合使用</p>
+<h3 id="sV-探测打开端口对应服务地版本信息"><a href="#sV-探测打开端口对应服务地版本信息" class="headerlink" title="-sV 探测打开端口对应服务地版本信息"></a>-sV 探测打开端口对应服务地版本信息</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">nmap</span> -sV &lt; 要扫描的目标<span class="built_in">ip</span>地址&gt;</span><br></pre></td></tr></table></figure>
+<p>举个栗子：<br><img src="https://s1.ax1x.com/2020/03/13/8ntCu9.png" alt></p>
+<h3 id="vv-对扫描结果详细输出（vv小写）"><a href="#vv-对扫描结果详细输出（vv小写）" class="headerlink" title="-vv 对扫描结果详细输出（vv小写）"></a>-vv 对扫描结果详细输出（vv小写）</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">nmap</span> -vv &lt; 要扫描的目标<span class="built_in">ip</span>地址&gt;</span><br></pre></td></tr></table></figure>
+<p>举个栗子：<br><img src="https://s1.ax1x.com/2020/03/13/8nt5Ux.png" alt><br>输出结果里包含了开放端口，扫描方法，端口对应服务协议等</p>
+<h3 id="路由追踪扫描"><a href="#路由追踪扫描" class="headerlink" title="路由追踪扫描"></a>路由追踪扫描</h3><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">nmap</span> -traceroute &lt; 要扫描的目标<span class="built_in">ip</span>地址&gt;</span><br></pre></td></tr></table></figure>
+<p>举个栗子：<br><img src="https://s1.ax1x.com/2020/03/13/8ntY8S.png" alt></p>
+<ul>
+<li>路由器追踪功能，能够帮助网络管理员了解网络通行情况</li>
+<li>通过路由器追踪可以查找从我们电脑所在地到目的地之间所经常的网络节点， 并可以看到通过各个结点所花费的时间。（图中TRACEROUTE下面的内容）</li>
+</ul>
+<h3 id="扫描一个网段下的IP个数"><a href="#扫描一个网段下的IP个数" class="headerlink" title="扫描一个网段下的IP个数"></a>扫描一个网段下的IP个数</h3><figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nmap ip地址/<span class="number">24</span></span><br></pre></td></tr></table></figure>
+<p>举个栗子：<br><img src="https://s1.ax1x.com/2020/03/13/8nUtmj.png" alt></p>
+<h2 id="实际使用注意点"><a href="#实际使用注意点" class="headerlink" title="实际使用注意点"></a>实际使用注意点</h2><ol>
+<li>多条指令联合使用</li>
+<li>挑选最适合的</li>
+<li>识别和绕过防火墙及IDS<ul>
+<li>-f #数据分片，即将一个正常数据分成几个包(分片大小必须是8的整数倍)</li>
+<li>-D #生成一堆欺骗性的地址的数据包<br>&lt;decoy1,decoy2[,ME],…&gt;: 用一组IP地址掩盖真实地址，其中ME填入自己的IP地址。</li>
+<li>-S #生成一个欺骗性的地址的数据包 -S &lt;IP_Address&gt; 伪装成其他IP地址</li>
+<li>-e #使用哪种网卡发送</li>
+<li>-g<br>–date-length    #设置数据长度<br>–ttl    #指定TTL<br>设置扫描的源端口。一些天真的防火墙和包过滤器的规则集允许源端口为DNS(53)或者FTP-DATA(20)的包通过和实现连接。显然，如果攻击者把源端口修改为20或者53，就可以摧毁防火墙的防护。在使用UDP扫描时，先使用53号端口；使用TCP扫描时，先使用20号端口。注意只有在能够使用这个端口进行扫描时，nmap才会使用这个端口。例如，如果你无法进行TCP扫描，nmap会自动改变源端口，即使你使用了-g选项。</li>
+</ul>
+</li>
+<li>主机发现和端口扫描参数区分  </li>
+</ol>
+<ul>
+<li>1&gt;: 主机发现<ul>
+<li>-Pn：只有该命令将指定的主机视作开启，跳过主机发现的过程用作穿透防火墙</li>
+<li>-PA/-PS/-PU/-PY：使用TCP ACK/SYN/或SCTP INIT/ECHO方式来发现主机</li>
+</ul>
+</li>
+<li>2&gt;: 端口扫描   <ul>
+<li>-sS/-sA/-sF：使用TCP SYN/ACK/FIN扫描，比较隐蔽</li>
+<li>-sU：使用UDP扫描方式确定目标主机UDP端口情况</li>
+<li>-sP：ping扫描，易被发现，可能会漏掉很多实际存活的主机  </li>
+</ul>
+</li>
+</ul>
+<h2 id="手册整理"><a href="#手册整理" class="headerlink" title="手册整理"></a>手册整理</h2><h3 id="目标规格"><a href="#目标规格" class="headerlink" title="目标规格"></a>目标规格</h3><p>除了选项，所有出现在Nmap命令行上的都被视为对目标主机的说明。 最简单的情况是指定一个目标IP地址或主机名。可以传递主机名，IP地址，网络，CIDR，IPv6，或者八位字节范围等。</p>
+<p>例如：</p>
+<ul>
+<li>scanme.nmap.org</li>
+<li>microsoft.com/24</li>
+<li>192.168.0.1</li>
+<li>10.0-255.0-255.1-254</li>
+</ul>
+<figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">-iL <span class="variable">&lt;inputfilename&gt;</span>: Input <span class="keyword">from</span> list of hosts/networks <span class="comment"># 从主机/网络列表中输入</span></span><br><span class="line">从 <span class="variable">&lt;inputfilename&gt;</span>中读取目标说明。在命令行输入 一堆主机名显得很笨拙，只要生成要扫描的主机的列表，用-iL 把文件名作为选项传给Nmap，就可以扫描文件中的所有IP地址。</span><br><span class="line"></span><br><span class="line">-iR <span class="variable">&lt;num hosts&gt;</span>: Choose <span class="keyword">random</span> targets <span class="comment"># 选择随机目标</span></span><br><span class="line"></span><br><span class="line">--exclude <span class="variable">&lt;host1[,host2][,host3],...&gt;</span>: Exclude hosts/networks <span class="comment"># 排除主机/网络</span></span><br><span class="line"></span><br><span class="line">--excludefile <span class="variable">&lt;exclude_file&gt;</span>: Exclude list <span class="keyword">from</span> file <span class="comment"># 从文件中排除列表</span></span><br></pre></td></tr></table></figure>
+<h3 id="选项及扫描类型"><a href="#选项及扫描类型" class="headerlink" title="选项及扫描类型"></a>选项及扫描类型</h3><h4 id="主机发现"><a href="#主机发现" class="headerlink" title="主机发现"></a>主机发现</h4><p>探测网络上的主机，主机发现有时候也叫做ping扫描，但它远远超越用世人皆知的ping工具 发送简单的ICMP回声请求报文。用户完全可以通过使用列表扫描(-sL)或者 通过关闭ping (-P0)跳过ping的步骤，也可以使用多个端口把TPC SYN/ACK，UDP和ICMP 任意组合起来玩一玩。</p>
+<p>探测的目的是获得响应以显示某个IP地址是否是活动的(正在被某 主机或者网络设备使用)。   </p>
+<p>-P<em>选项(用于选择 ping的类型)可以被结合使用。 您可以通过使用不同的TCP端口/标志位和ICMP码发送许多探测报文 来增加穿透防守严密的防火墙的机会。另外要注意的是即使您指定了其它 -P</em>选项，ARP发现(-PR)对于局域网上的 目标而言是默认行为，因为它总是更快更有效。</p>
+<figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"><span class="symbol">sL:</span> List Scan - simply list targets to scan <span class="comment"># 列表扫描 - 仅列出要扫描的目标</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-sP：<span class="comment"># 仅Ping扫描  </span></span></span><br><span class="line"><span class="ruby">该选项告诉Nmap仅仅 进行ping扫描 (主机发现)，然后打印出对扫描做出响应的那些主机。它可以很方便地得出 网络上有多少机器正在运行或者监视服务器是否正常运行。常常有人称它为 地毯式ping，它比ping广播地址更可靠，因为许多主机对广播请求不响应。</span></span><br><span class="line"><span class="ruby">-sP选项在默认情况下， 发送一个ICMP回声请求和一个TCP报文到<span class="number">80</span>端口。如果非特权用户执行，就发送一个SYN报文 (用connect()系统调用)到目标机的<span class="number">80</span>端口。 当特权用户扫描局域网上的目标机时，会发送ARP请求(-PR)， ，除非使用了--send-ip选项。 -sP选项可以和除-P<span class="number">0</span>)之外的任何发现探测类型-P* 选项结合使用以达到更大的灵活性。 一旦使用了任何探测类型和端口选项，默认的探测(ACK和回应请求)就被覆盖了。</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-<span class="symbol">sn:</span> Ping Scan - disable port scan <span class="comment"># Ping扫描 - 禁用端口扫描</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-<span class="symbol">Pn:</span> Treat all hosts as online -- skip host discovery <span class="comment"># 将所有主机视为在线-跳过主机发现</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-PS/PA/PU/PY[portlist]: TCP SYN/ACK, UDP <span class="keyword">or</span> SCTP discoveryto given ports <span class="comment"># 对给定端口的TCP SYN / ACK，UDP或SCTP发现</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-PE/PP/<span class="symbol">PM:</span> ICMP echo, timestamp, <span class="keyword">and</span> netmask requestdiscovery probes <span class="comment"># ICMP回显，时间戳和网络掩码请求发现</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-PO[protocol list]: IP Protocol Ping <span class="comment"># 对给定IP协议的Ping发现</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-n/-<span class="symbol">R:</span> Never <span class="keyword">do</span> DNS resolution/Always resolve  [<span class="symbol">default:</span>sometimes]  <span class="comment"># 从不进行DNS解析/始终解析 【默认：有时解析】</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--dns-servers &lt;serv1[,serv2],...&gt;: Specify custom DNS servers <span class="comment"># 指定自定义DNS服务器</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--system-<span class="symbol">dns:</span> Use OS<span class="string">'s DNS resolver # 使用OS的DNS解析器</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--<span class="symbol">traceroute:</span> Trace hop path to each host <span class="comment"># 跟踪到每个主机的hop路径</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="扫描技术"><a href="#扫描技术" class="headerlink" title="扫描技术"></a>扫描技术</h4><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">sS/sT/sA/sW/<span class="symbol">sM:</span> TCP SYN/Connect()/ACK/Window/Maimon scans <span class="comment"># TCP SYN / Connect（）/ ACK / Window / Maimon扫描</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-<span class="symbol">sU:</span> UDP Scan <span class="comment"># UDP扫描</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-sN/sF/<span class="symbol">sX:</span> TCP Null, FIN, <span class="keyword">and</span> Xmas scans <span class="comment"># TCP Null，FIN和Xmas扫描</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--scanflags &lt;flags&gt;: Customize TCP scan flags  <span class="comment"># 自定义TCP扫描标志</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-sI &lt;zombie host[<span class="symbol">:probeport</span>]&gt;: Idle scan <span class="comment"># 闲置扫描/僵尸主机扫描</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-sY/<span class="symbol">sZ:</span> SCTP INIT/COOKIE-ECHO scans  <span class="comment"># SCTP INIT / COOKIE-ECHO扫描</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-<span class="symbol">sO:</span> IP protocol scan <span class="comment"># IP协议扫描</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-b &lt;FTP relay host&gt;: FTP bounce scan <span class="comment"># FTP反弹扫描</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="端口规格和扫描顺序"><a href="#端口规格和扫描顺序" class="headerlink" title="端口规格和扫描顺序"></a>端口规格和扫描顺序</h4><p>探测目标主机所开放的端口<br><figure class="highlight pf"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">-p <span class="variable">&lt;port ranges&gt;</span>: Only scan specified ports <span class="comment"># 仅扫描指定的端口</span></span><br><span class="line">  例如: -p22; -p1-<span class="number">65535</span>; -p U:<span class="number">53</span>,<span class="number">111</span>,<span class="number">137</span>,T:<span class="number">21</span>-<span class="number">25</span>,<span class="number">80</span>,<span class="number">139</span>,<span class="number">8080</span>,S:<span class="number">9</span></span><br><span class="line"></span><br><span class="line">--exclude-ports <span class="variable">&lt;port ranges&gt;</span>: Exclude the specified portsfrom scanning  <span class="comment"># 排除指定端口的扫描</span></span><br><span class="line"></span><br><span class="line">-F: Fast mode - Scan fewer ports than the <span class="keyword">default</span> scan <span class="comment"># 快速模式-扫描比默认扫描更少的端口（仅扫描nmap-service文件中列出的端口）</span></span><br><span class="line"></span><br><span class="line">-r: Scan ports consecutively - don't randomize <span class="comment"># 连续扫描端口-不要随机化</span></span><br><span class="line"></span><br><span class="line">--top-ports <span class="variable">&lt;number&gt;</span>: Scan <span class="variable">&lt;number&gt;</span> most common ports <span class="comment"># 扫描&lt;number&gt;最常见的端口</span></span><br><span class="line"></span><br><span class="line">--port-ratio <span class="variable">&lt;ratio&gt;</span>: Scan ports more common than <span class="variable">&lt;ratio&gt;</span> <span class="comment"># 扫描端口比&lt;ratio&gt;更常见</span></span><br></pre></td></tr></table></figure></p>
+<h4 id="服务-版本检测"><a href="#服务-版本检测" class="headerlink" title="服务/版本检测"></a>服务/版本检测</h4><p>探测目标主机的网络服务，判断其服务名称及版本号<br><figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">-sV: Probe <span class="keyword">open</span> ports <span class="keyword">to</span> determine service/<span class="keyword">version</span> info # 探测打开的端口以确定服务/版本信息</span><br><span class="line"></span><br><span class="line">--<span class="keyword">version</span>-intensity <span class="symbol">&lt;level&gt;</span>: Set from <span class="number">0</span> (light) <span class="keyword">to</span> <span class="number">9</span> (<span class="keyword">try</span> <span class="keyword">all</span> probes) # 版本强度设置从<span class="number">0</span>(light)到<span class="number">9</span>(尝试所有探测)</span><br><span class="line"></span><br><span class="line">--<span class="keyword">version</span>-ligh<span class="variable">t:</span> Limit <span class="keyword">to</span> most likely probes (intensity <span class="number">2</span>) # 仅限于最可能进行探测的探针，以便于更快地进行识别（强度为<span class="number">2</span>）</span><br><span class="line"></span><br><span class="line">--<span class="keyword">version</span>-<span class="keyword">al</span><span class="variable">l:</span> Try every single probe (intensity <span class="number">9</span>) # 尝试每一个探针进行版本探测(强度<span class="number">9</span>)</span><br><span class="line"></span><br><span class="line">--<span class="keyword">version</span>-trace: Show detailed <span class="keyword">version</span> scan activity (fordebugging) # 显示详细的版本扫描活动（用于调试）</span><br></pre></td></tr></table></figure></p>
+<h4 id="脚本扫描（不常用）"><a href="#脚本扫描（不常用）" class="headerlink" title="脚本扫描（不常用）"></a>脚本扫描（不常用）</h4><p>常用的脚本设置：–script=类别 进行扫描<br>常见的类别如下：</p>
+<ul>
+<li><p>auth：绕过鉴权扫描<br>例：nmap –script=auth 192.168.11.1</p>
+</li>
+<li><p>broadcast：在局域网内探查更多服务开启的情况</p>
+</li>
+<li><p>brute：对常见的HTTP/SMTP等应用协议提供暴力破解</p>
+</li>
+<li><p>dos：用于拒绝服务攻击</p>
+</li>
+<li><p>vuln：用于检查目标机是否有常见漏洞</p>
+</li>
+<li><p>version：负责增强服务与版本扫描的功能的脚本</p>
+</li>
+<li><p>malware：探测目标机是否感染了病毒，开启后门等信息</p>
+</li>
+<li><p>fuzzer：模糊测试脚本，发送异常的包到目标机，探测出潜在漏洞</p>
+</li>
+</ul>
+<p>支持探测脚本的编写：使用Nmap的脚本引擎（NSE）和Lua编程语言</p>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">-sC: equivalent <span class="keyword">to</span> <span class="attribute">--script</span>=default # 相当于默认脚本</span><br><span class="line"><span class="attribute">--script</span>=&lt;Lua scripts&gt;: &lt;Lua scripts&gt; is a comma separated list of # &lt;Lua scripts&gt;是一个逗号分隔的列表</span><br><span class="line">    例如：directories, script-files <span class="keyword">or</span> script-categories # 目录、脚本文件或脚本类别</span><br><span class="line"></span><br><span class="line"><span class="attribute">--script-args</span>=&lt;n1=v1,[<span class="attribute">n2</span>=v2,...]&gt;: provide arguments <span class="keyword">to</span> scripts # 为脚本提供参数</span><br><span class="line"></span><br><span class="line"><span class="attribute">--script-args-file</span>=filename: provide NSE<span class="built_in"> script </span>args <span class="keyword">in</span> a file # 在文件中提供NSE脚本参数</span><br><span class="line"></span><br><span class="line">--script-trace: Show all data sent <span class="keyword">and</span> received # 显示所有发送和接收的数据</span><br><span class="line"></span><br><span class="line">--script-updatedb: Update the<span class="built_in"> script </span>database. # 更新脚本数据库</span><br><span class="line"></span><br><span class="line"><span class="attribute">--script-help</span>=&lt;Lua scripts&gt;: Show help about scripts. # 显示关于脚本的帮助</span><br><span class="line">    &lt;Lua scripts&gt; is a comma-separated list of script-files <span class="keyword">or</span> script-categories. </span><br><span class="line">    # &lt;Lua scripts&gt;是一个用逗号分隔的脚本文件或脚本类别列表。</span><br></pre></td></tr></table></figure>
+<h4 id="操作系统OS检测"><a href="#操作系统OS检测" class="headerlink" title="操作系统OS检测"></a>操作系统OS检测</h4><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby"><span class="symbol">O:</span> Enable OS detection  <span class="comment"># 启动OS检测</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--osscan-<span class="symbol">limit:</span> Limit OS detection to promising targets <span class="comment"># 限制操作系统检测有可能的目标</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--osscan-<span class="symbol">guess:</span> Guess OS more aggressively <span class="comment"># 更准确地猜测操作系统</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="时间和性能"><a href="#时间和性能" class="headerlink" title="时间和性能"></a>时间和性能</h4><p>使用<time>的选项以秒为单位，或将’ms’(毫秒)、’s’(秒)、’m’(分钟)或’h’(小时)附加到值(如30m)。</time></p>
+<figure class="highlight vim"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">-T<span class="symbol">&lt;0-5&gt;</span>: Set timing template (higher <span class="keyword">is</span> faster) # 设置定时模板(越高越快)</span><br><span class="line"></span><br><span class="line">--<span class="built_in">min</span>-hostgroup/<span class="built_in">max</span>-hostgroup <span class="symbol">&lt;size&gt;</span>: Parallel host scan group sizes # 并行主机扫描组大小</span><br><span class="line"></span><br><span class="line">--<span class="built_in">min</span>-parallelism/<span class="built_in">max</span>-parallelism <span class="symbol">&lt;numprobes&gt;</span>: Probe parallelization # 探针并行化</span><br><span class="line"></span><br><span class="line">--<span class="built_in">min</span>-rtt-timeout/<span class="built_in">max</span>-rtt-timeout/initial-rtt-timeout <span class="symbol">&lt;time&gt;</span>: Specifies probe <span class="built_in">round</span> trip time. # 指定探测往返时间</span><br><span class="line"></span><br><span class="line">--<span class="built_in">max</span>-retries <span class="symbol">&lt;tries&gt;</span>: Caps <span class="keyword">number</span> of port scan probe retransmissions. # 限制端口扫描探针重发的数量</span><br><span class="line"></span><br><span class="line">--host-timeout <span class="symbol">&lt;time&gt;</span>: Give <span class="keyword">up</span> <span class="keyword">on</span> target after this long # 超时放弃目标</span><br><span class="line"></span><br><span class="line">--scan-delay/--<span class="built_in">max</span>-scan-delay <span class="symbol">&lt;time&gt;</span>: Adjust delay between probes # 调整两次探查之间的延迟</span><br><span class="line"></span><br><span class="line">--<span class="built_in">min</span>-rate <span class="symbol">&lt;number&gt;</span>: Send packets <span class="keyword">no</span> slower than <span class="symbol">&lt;number&gt;</span> per second # 发送数据包的速度不低于<span class="symbol">&lt;number&gt;</span> / s</span><br><span class="line"></span><br><span class="line">--<span class="built_in">max</span>-rate <span class="symbol">&lt;number&gt;</span>: Send packets <span class="keyword">no</span> faster than <span class="symbol">&lt;number&gt;</span> per second # 发送数据包的速度不超过<span class="symbol">&lt;number&gt;</span> / s</span><br></pre></td></tr></table></figure>
+<h4 id="防火墙-IDS规避和欺骗"><a href="#防火墙-IDS规避和欺骗" class="headerlink" title="防火墙/IDS规避和欺骗"></a>防火墙/IDS规避和欺骗</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">-f; --mtu &lt;val&gt;: fragment packets (optionally w/given MTU) # 分段数据包(可选 w/具有给定的MTU)</span><br><span class="line"></span><br><span class="line">-D &lt;decoy1,decoy2[,ME],<span class="built_in">..</span>.&gt;: Cloak a scan with decoys # 用诱饵掩护扫描</span><br><span class="line"></span><br><span class="line">-S &lt;IP_Address&gt;: Spoof source<span class="built_in"> address </span># 恶搞/欺骗源地址</span><br><span class="line"></span><br><span class="line">-e &lt;iface&gt;: Use specified<span class="built_in"> interface </span># 使用指定的接口</span><br><span class="line"></span><br><span class="line">-g/--source-port &lt;portnum&gt;: Use given<span class="built_in"> port </span>number # 使用给定的端口号</span><br><span class="line"></span><br><span class="line">--proxies &lt;url1,[url2],<span class="built_in">..</span>.&gt;: Relay connections through HTTP/SOCKS4 proxies # 通过HTTP/SOCKS4代理中继连接</span><br><span class="line"></span><br><span class="line">--data &lt;hex string&gt;: Append a custom payload <span class="keyword">to</span> sent packets # 向发送的包附加自定义有效负载</span><br><span class="line"></span><br><span class="line">--data-string &lt;string&gt;: Append a custom ASCII string <span class="keyword">to</span> sent packets # 向发送的数据包附加自定义ASCII字符串</span><br><span class="line"></span><br><span class="line">--data-length &lt;num&gt;: Append random data <span class="keyword">to</span> sent packets # 向发送的数据包追加随机数据</span><br><span class="line"></span><br><span class="line">--ip-options &lt;options&gt;: Send packets with specified<span class="built_in"> ip </span>options # 发送指定ip选项的数据包</span><br><span class="line"></span><br><span class="line">--ttl &lt;val&gt;: <span class="builtin-name">Set</span><span class="built_in"> IP </span>time-to-live field # 设置IP生存时间字段</span><br><span class="line"></span><br><span class="line">--spoof-mac &lt;mac address/prefix/vendor name&gt;: Spoof your MAC<span class="built_in"> address </span># 恶搞/欺骗你的MAC地址</span><br><span class="line"></span><br><span class="line">--badsum: Send packets with a bogus TCP/UDP/SCTP checksum # 发送带有伪造的TCP/UDP/SCTP校验和的数据包</span><br></pre></td></tr></table></figure>
+<h4 id="输出"><a href="#输出" class="headerlink" title="输出"></a>输出</h4><figure class="highlight haml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">-<span class="ruby">oN/-oX/-oS/-oG &lt;file&gt;: Output scan <span class="keyword">in</span> normal, XML, s<span class="params">|&lt;rIpt kIddi3,<span class="keyword">and</span> Grepable format, respectively, to the given filename. # 分别以常规标准、XML、s|</span>&lt;rIpt kIddi3和Grepable格式将输出扫描结果到给定的文件名</span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-oA &lt;basename&gt;: Output <span class="keyword">in</span> the three major formats at once <span class="comment"># 同时以三种主要格式输出</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-<span class="symbol">v:</span> Increase verbosity level (use -vv <span class="keyword">or</span> more <span class="keyword">for</span> greater effect) <span class="comment"># 增加详细级别(使用-vv或更多以获得更好的效果)</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">-<span class="symbol">d:</span> Increase debugging level (use -dd <span class="keyword">or</span> more <span class="keyword">for</span> greater effect) <span class="comment"># 增加调试级别(使用-dd或更多以获得更好的效果)</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--<span class="symbol">reason:</span> Display the reason a port is <span class="keyword">in</span> a particular state <span class="comment"># 显示端口处于特定状态的原因</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--<span class="symbol">open:</span> Only show open (<span class="keyword">or</span> possibly open) ports <span class="comment"># 只显示打开的(或可能打开的)端口</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--packet-<span class="symbol">trace:</span> Show all packets sent <span class="keyword">and</span> received <span class="comment"># 显示所有发送和接收的数据包</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--<span class="symbol">iflist:</span> Print host interfaces <span class="keyword">and</span> routes (<span class="keyword">for</span> debugging) <span class="comment"># 打印主机接口和路由(用于调试)</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--append-<span class="symbol">output:</span> Append to rather than clobber specified output files <span class="comment"># 追加指定的输出文件，而不是删除指定的输出文件</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--resume &lt;filename&gt;: Resume an aborted scan <span class="comment"># 恢复已中止的扫描</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--stylesheet &lt;path/URL&gt;: XSL stylesheet to transform XML output to HTML <span class="comment"># XSL 样式表，用于将 XML 输出转换为 HTML</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--<span class="symbol">webxml:</span> Reference stylesheet from Nmap.Org <span class="keyword">for</span> more portable XML  <span class="comment"># 从Nmap中引用样式表，获得更可移植的XML</span></span></span><br><span class="line"><span class="ruby"></span></span><br><span class="line"><span class="ruby">--no-<span class="symbol">stylesheet:</span> Prevent associating of XSL stylesheet w/XML output <span class="comment"># 防止XSL样式表与w/XML输出相关联</span></span></span><br></pre></td></tr></table></figure>
+<h4 id="MISC"><a href="#MISC" class="headerlink" title="MISC"></a>MISC</h4><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">-6: <span class="builtin-name">Enable</span><span class="built_in"> IPv6 </span>scanning # 开启IPv6扫描</span><br><span class="line"></span><br><span class="line">-A: <span class="builtin-name">Enable</span> OS detection, version detection,<span class="built_in"> script </span>scanning, <span class="keyword">and</span> traceroute  # 启用操作系统检测、版本检测、脚本扫描和路由追踪</span><br><span class="line"></span><br><span class="line">--datadir &lt;dirname&gt;: Specify custom Nmap data file location # 指定自定义Nmap数据文件位置</span><br><span class="line"></span><br><span class="line">--send-eth/--send-ip: Send using<span class="built_in"> raw ethernet </span>frames <span class="keyword">or</span><span class="built_in"> IP </span>packets # 使用原始以太网帧或IP数据包发送</span><br><span class="line"></span><br><span class="line">--privileged: Assume that the<span class="built_in"> user </span>is fully privileged # 假设用户拥有完全的特权</span><br><span class="line"></span><br><span class="line">--unprivileged: Assume the<span class="built_in"> user </span>lacks<span class="built_in"> raw </span>socket privileges # 假设用户缺少原始的套接字特权</span><br><span class="line"></span><br><span class="line">-V: <span class="builtin-name">Print</span> version number # 打印版本号</span><br><span class="line"></span><br><span class="line">-h: <span class="builtin-name">Print</span> this help summary page. # 打印此帮助摘要页面</span><br><span class="line">  例子：</span><br><span class="line">      nmap -v -A scanme.nmap.org</span><br><span class="line">      nmap -v -sP 192.168.0.0/16 10.0.0.0/8</span><br><span class="line">      nmap -v -iR 10000 -P0 -p 80</span><br></pre></td></tr></table></figure>
+<h2 id="Namp中文手册"><a href="#Namp中文手册" class="headerlink" title="Namp中文手册"></a>Namp中文手册</h2><p>————————————————<br>更多详情：<span class="exturl" data-url="aHR0cDovL3d3dy5ubWFwLmNvbS5jbi9kb2MvbWFudWFsLnNodG0jMg==" title="http://www.nmap.com.cn/doc/manual.shtm#2">http://www.nmap.com.cn/doc/manual.shtm#2<i class="fa fa-external-link"></i></span></p>
+<p>部分内容原文链接：<span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3FxXzQxODgwMDY5L2FydGljbGUvZGV0YWlscy84Mjc5Mjg5Ng==" title="https://blog.csdn.net/qq_41880069/article/details/82792896">https://blog.csdn.net/qq_41880069/article/details/82792896<i class="fa fa-external-link"></i></span></p>
+<p>更多骚操作，对网络需要有一定基础，才懂得实现！</p>
+
+      
+    </div>
+     <!-- 相关文章推荐 -->
+    
+      <!-- 
+
+-->
+
+
+    
+
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------本文结束<i class="fa fa-heart"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    <div>
+      
+          
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/b40299fc.html">kali工具之Nmap</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 龍皓 的个人博客">龍皓</a></p>
+  <p><span>发布时间:</span>2020年03月11日 - 20:46</p>
+  <p><span>最后更新:</span>2020年03月19日 - 17:48</p>
+  <p><span>原始链接:</span><a href="/post/b40299fc.html" title="kali工具之Nmap">https://longhaoaslwx.github.io/post/b40299fc.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://longhaoaslwx.github.io/post/b40299fc.html" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+      
+    </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>如果觉得可以，可以给点辣条钱吗？</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/reward/wechatpay.png" alt="龍皓 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    <!--
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>龍皓</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://longhaoaslwx.github.io/post/b40299fc.html" title="kali工具之Nmap">https://longhaoaslwx.github.io/post/b40299fc.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    
+    -->
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/kali/" rel="tag"><i class="fa fa-tag"></i> kali</a>
+          
+            <a href="/tags/工具/" rel="tag"><i class="fa fa-tag"></i> 工具</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/fb54166a.html" rel="prev" title="CentOS8报错Cannot update read-only repo解决方案">
+                <i class="fa fa-chevron-left"></i> CentOS8报错Cannot update read-only repo解决方案
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/1c70c131.html" rel="next" title="Liunx之有趣命令">
+                Liunx之有趣命令 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+            <a href="/">  
+              <img class="site-author-image" itemprop="image" src="/images/myavatar.png" alt="龍皓">
+            </a>    
+            
+              <p class="site-author-name" itemprop="name">龍皓</p>
+              <div class="site-description motion-element" itemprop="description">你的时间有限，所以不要浪费时间去过别人的生活</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xvbmdoYW9hc2x3eC8=" title="GitHub &rarr; https://github.com/longhaoaslwx/"><i class="fa fa-fw fa-github"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="/1170764787@qq.com" title="E-Mail &rarr; 1170764787@qq.com"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9jbi5iaW5nLmNvbS8=" title="Bing &rarr; https://cn.bing.com/"><i class="fa fa-fw fa-github-alt"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9iYWlkdS5jb20=" title="Baidu &rarr; https://baidu.com"><i class="fa fa-fw fa-firefox"></i></span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <!-- modify icon to fire by szw -->
+          <i class="fa fa-history fa-" aria-hidden="true"></i>
+          近期文章
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+          
+            <li>
+              <a href="/post/14439e75.html" title="liunx作业之搭建FTP服务器" target="_blank">liunx作业之搭建FTP服务器</a>
+            </li>
+          
+            <li>
+              <a href="/post/dd504702.html" title="Wallpaper Engine之太空主题解锁" target="_blank">Wallpaper Engine之太空主题解锁</a>
+            </li>
+          
+            <li>
+              <a href="/post/733534d2.html" title="阿里云服务器搭建halo的艰辛之路" target="_blank">阿里云服务器搭建halo的艰辛之路</a>
+            </li>
+          
+            <li>
+              <a href="/post/8731d67a.html" title="用python制作一个课堂随机点名工具" target="_blank">用python制作一个课堂随机点名工具</a>
+            </li>
+          
+            <li>
+              <a href="/post/db7331ef.html" title="liunx作业之用Apache搭建简易的Web网站服务器" target="_blank">liunx作业之用Apache搭建简易的Web网站服务器</a>
+            </li>
+          
+        </ul>
+      </div>
+
+
+<div id="days"></div>
+<script>
+function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    BirthDay=new Date("02/8/2020 00:00:00");
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    e_daysold=timeold/msPerDay
+    daysold=Math.floor(e_daysold);
+    e_hrsold=(e_daysold-daysold)*24;
+    hrsold=setzero(Math.floor(e_hrsold));
+    e_minsold=(e_hrsold-hrsold)*60;
+    minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+    seconds=setzero(Math.floor((e_minsold-minsold)*60));
+    document.getElementById('days').innerHTML="本博客已安全运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+}
+function setzero(i) {
+    if (i<10) {
+        i="0" + i
+    };
+    return i;
+}
+show_date_time();
+</script>
+
+
+
+<!-- 一句话
+<script type="text/javascript" src="https://api.uixsj.cn/hitokoto/en.php?code=js"></script>
+<div id="enhitokoto"><script>enhitokoto()</script></div>
+-->
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#Nmap的使用"><span class="nav-number">1.</span> <span class="nav-text">Nmap的使用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#常见用法"><span class="nav-number">2.</span> <span class="nav-text">常见用法</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#ping扫描-——-nmap-lt-要扫描的目标ip地址-gt"><span class="nav-number">2.1.</span> <span class="nav-text">ping扫描 —— nmap &lt;要扫描的目标ip地址&gt;</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#TCP-SYN-Ping扫描"><span class="nav-number">2.2.</span> <span class="nav-text">TCP SYN Ping扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#半开扫描"><span class="nav-number">2.3.</span> <span class="nav-text">半开扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#自定义端口扫描"><span class="nav-number">2.4.</span> <span class="nav-text">自定义端口扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Pn-非ping扫描，不执行主机发现，可以跳过防火墙（常用）"><span class="nav-number">2.5.</span> <span class="nav-text">-Pn 非ping扫描，不执行主机发现，可以跳过防火墙（常用）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#sV-探测打开端口对应服务地版本信息"><span class="nav-number">2.6.</span> <span class="nav-text">-sV 探测打开端口对应服务地版本信息</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#vv-对扫描结果详细输出（vv小写）"><span class="nav-number">2.7.</span> <span class="nav-text">-vv 对扫描结果详细输出（vv小写）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#路由追踪扫描"><span class="nav-number">2.8.</span> <span class="nav-text">路由追踪扫描</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#扫描一个网段下的IP个数"><span class="nav-number">2.9.</span> <span class="nav-text">扫描一个网段下的IP个数</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实际使用注意点"><span class="nav-number">3.</span> <span class="nav-text">实际使用注意点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#手册整理"><span class="nav-number">4.</span> <span class="nav-text">手册整理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#目标规格"><span class="nav-number">4.1.</span> <span class="nav-text">目标规格</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#选项及扫描类型"><span class="nav-number">4.2.</span> <span class="nav-text">选项及扫描类型</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#主机发现"><span class="nav-number">4.2.1.</span> <span class="nav-text">主机发现</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#扫描技术"><span class="nav-number">4.2.2.</span> <span class="nav-text">扫描技术</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#端口规格和扫描顺序"><span class="nav-number">4.2.3.</span> <span class="nav-text">端口规格和扫描顺序</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#服务-版本检测"><span class="nav-number">4.2.4.</span> <span class="nav-text">服务/版本检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#脚本扫描（不常用）"><span class="nav-number">4.2.5.</span> <span class="nav-text">脚本扫描（不常用）</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#操作系统OS检测"><span class="nav-number">4.2.6.</span> <span class="nav-text">操作系统OS检测</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#时间和性能"><span class="nav-number">4.2.7.</span> <span class="nav-text">时间和性能</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#防火墙-IDS规避和欺骗"><span class="nav-number">4.2.8.</span> <span class="nav-text">防火墙/IDS规避和欺骗</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#输出"><span class="nav-number">4.2.9.</span> <span class="nav-text">输出</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#MISC"><span class="nav-number">4.2.10.</span> <span class="nav-text">MISC</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Namp中文手册"><span class="nav-number">5.</span> <span class="nav-text">Namp中文手册</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" style=" text-align:center;">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-龍皓"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">true</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"> 站点字数合计:</i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">169k</span>
+  
+  
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<div class="run_time" style=" text-align:center;">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("02/08/2020 00:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+    setInterval("createtime()",250);
+  </script>
+</div>
+        
+<div class="busuanzi-count" style=" text-align:center;">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+
+    
+  </div>
+    <!-- badApplePlayer -->
+    <!---->
+      <!-- Your XlchPlayerKey -->
+      <!--<script>XlchKey="oMPfWoAPTn";</script>-->
+      <!-- font-awesome 4.2.0 -->
+      <!--<link href="http://lib.baomitu.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+      <!-- JQuery 2.2.4 -->
+      <!--<script src="http://lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script>-->
+      <!-- JQuery-mousewheel 3.1.9 -->
+      <!--<script src="http://lib.baomitu.com/jquery-mousewheel/3.1.9/jquery.mousewheel.min.js"></script>-->
+      <!-- Scrollbar -->
+      <!--<script src="http://static.badapple.top/BadApplePlayer/js/scrollbar.js"></script>-->
+      <!-- BadApplePlayer -->
+      <!--<script src="http://static.badapple.top/BadApplePlayer/Player.js"></script>-->
+    <!-- end-->
+    <!---->
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+  
+    
+    
+      
+    
+  
+  <script color="255,0,255" opacity="0.7" zindex="-1" count="140" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1.0.0/canvas-nest.min.js"></script>
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+    
+  
+  <script id="ribbon" size="300" alpha="0.1" zindex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+
+
+
+  
+
+
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three-waves.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/canvas_lines.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/canvas_sphere.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+    <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+ 
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+ 
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+ 
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+ 
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+ 
+        if(result)$(this).text('复制成功')
+        else $(this).text('复制失败')
+ 
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+  
+  
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+  <script src="/js/exturl.js?v=7.1.1"></script>
+
+
+  
+  
+  
+
+  
+
+  
+  
+  
+
+
+  
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
+
+
+
+  
+
+<script src="//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'aNpMMeQzVbcy6Dk67eEfNJ5D-gzGzoHsz',
+    appKey: 'VuAEHKniNpjDSidp3pwoVKWx',
+    placeholder: 'ヾ(≧O≦)〃嗷~ 把爱说出来！',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+    MathJax.Ajax.config.path['mhchem'] = '//cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.3.0';
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+        extensions: ['[mhchem]/mhchem.js'],
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+  
+
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('manual', "#更多");
+  
+  </script>
+
+
+    <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+ 
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+ 
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+ 
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+ 
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+ 
+        if(result)$(this).text('复制成功')
+        else $(this).text('复制失败')
+ 
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+  
+  
+
+  
+
+    <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+</body>
+</html>
+

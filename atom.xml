@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>龍之随笔</title>
+  
+  
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="https://longhaoaslwx.github.io/"/>
+  <updated>2020-03-27T13:25:22.102Z</updated>
+  <id>https://longhaoaslwx.github.io/</id>
+  
+  <author>
+    <name>龍皓</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>liunx作业之搭建FTP服务器</title>
+    <link href="https://longhaoaslwx.github.io/post/14439e75.html"/>
+    <id>https://longhaoaslwx.github.io/post/14439e75.html</id>
+    <published>2020-03-26T09:59:30.000Z</published>
+    <updated>2020-03-27T13:25:22.102Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="Linux学习" scheme="https://longhaoaslwx.github.io/categories/Linux%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="linux" scheme="https://longhaoaslwx.github.io/tags/linux/"/>
+    
+      <category term="课后作业" scheme="https://longhaoaslwx.github.io/tags/%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Wallpaper Engine之太空主题解锁</title>
+    <link href="https://longhaoaslwx.github.io/post/dd504702.html"/>
+    <id>https://longhaoaslwx.github.io/post/dd504702.html</id>
+    <published>2020-03-25T15:13:25.000Z</published>
+    <updated>2020-03-27T13:25:22.102Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="有趣技巧" scheme="https://longhaoaslwx.github.io/categories/%E6%9C%89%E8%B6%A3%E6%8A%80%E5%B7%A7/"/>
+    
+    
+      <category term="Wallpaper Engine" scheme="https://longhaoaslwx.github.io/tags/Wallpaper-Engine/"/>
+    
+      <category term="神秘代码" scheme="https://longhaoaslwx.github.io/tags/%E7%A5%9E%E7%A7%98%E4%BB%A3%E7%A0%81/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>阿里云服务器搭建halo的艰辛之路</title>
+    <link href="https://longhaoaslwx.github.io/post/733534d2.html"/>
+    <id>https://longhaoaslwx.github.io/post/733534d2.html</id>
+    <published>2020-03-25T01:28:46.000Z</published>
+    <updated>2020-03-27T13:25:22.103Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="博客配置" scheme="https://longhaoaslwx.github.io/categories/%E5%8D%9A%E5%AE%A2%E9%85%8D%E7%BD%AE/"/>
+    
+    
+      <category term="halo" scheme="https://longhaoaslwx.github.io/tags/halo/"/>
+    
+      <category term="服务器配置" scheme="https://longhaoaslwx.github.io/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>用python制作一个课堂随机点名工具</title>
+    <link href="https://longhaoaslwx.github.io/post/8731d67a.html"/>
+    <id>https://longhaoaslwx.github.io/post/8731d67a.html</id>
+    <published>2020-03-22T11:45:54.000Z</published>
+    <updated>2020-03-22T16:33:17.530Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="编程基础" scheme="https://longhaoaslwx.github.io/categories/%E7%BC%96%E7%A8%8B%E5%9F%BA%E7%A1%80/"/>
+    
+    
+      <category term="Python" scheme="https://longhaoaslwx.github.io/tags/Python/"/>
+    
+      <category term="项目" scheme="https://longhaoaslwx.github.io/tags/%E9%A1%B9%E7%9B%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>liunx作业之用Apache搭建简易的Web网站服务器</title>
+    <link href="https://longhaoaslwx.github.io/post/db7331ef.html"/>
+    <id>https://longhaoaslwx.github.io/post/db7331ef.html</id>
+    <published>2020-03-22T08:02:30.000Z</published>
+    <updated>2020-03-22T16:33:17.529Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天写搭建一个简单的Web服务器&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux学习" scheme="https://longhaoaslwx.github.io/categories/Linux%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="课后作业" scheme="https://longhaoaslwx.github.io/tags/%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A/"/>
+    
+      <category term="liunx" scheme="https://longhaoaslwx.github.io/tags/liunx/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>liunx作业之配置地址伪装和路由转发</title>
+    <link href="https://longhaoaslwx.github.io/post/ba3adfe4.html"/>
+    <id>https://longhaoaslwx.github.io/post/ba3adfe4.html</id>
+    <published>2020-03-19T12:47:39.000Z</published>
+    <updated>2020-03-22T10:10:49.212Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天写写作业实现&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux学习" scheme="https://longhaoaslwx.github.io/categories/Linux%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="linux" scheme="https://longhaoaslwx.github.io/tags/linux/"/>
+    
+      <category term="课后作业" scheme="https://longhaoaslwx.github.io/tags/%E8%AF%BE%E5%90%8E%E4%BD%9C%E4%B8%9A/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>EternalBlue）（永恒之蓝）漏洞复现</title>
+    <link href="https://longhaoaslwx.github.io/post/e6f5fbca.html"/>
+    <id>https://longhaoaslwx.github.io/post/e6f5fbca.html</id>
+    <published>2020-03-16T14:23:36.000Z</published>
+    <updated>2020-03-20T14:15:36.234Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;此文章仅供学习研究,不可用于其他非法用途！！！&lt;br&gt;
+    
+    </summary>
+    
+      <category term="信息安全" scheme="https://longhaoaslwx.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="kali" scheme="https://longhaoaslwx.github.io/tags/kali/"/>
+    
+      <category term="漏洞复现" scheme="https://longhaoaslwx.github.io/tags/%E6%BC%8F%E6%B4%9E%E5%A4%8D%E7%8E%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>运筹学基础学习笔记（四）</title>
+    <link href="https://longhaoaslwx.github.io/post/7a5df0dd.html"/>
+    <id>https://longhaoaslwx.github.io/post/7a5df0dd.html</id>
+    <published>2020-03-15T06:35:54.000Z</published>
+    <updated>2020-03-22T09:09:15.108Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;对库存物资的科学管理&lt;br&gt;
+    
+    </summary>
+    
+      <category term="专升本学习笔记" scheme="https://longhaoaslwx.github.io/categories/%E4%B8%93%E5%8D%87%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="运筹学基础" scheme="https://longhaoaslwx.github.io/tags/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="专升本" scheme="https://longhaoaslwx.github.io/tags/%E4%B8%93%E5%8D%87%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>CentOS8报错Cannot update read-only repo解决方案</title>
+    <link href="https://longhaoaslwx.github.io/post/fb54166a.html"/>
+    <id>https://longhaoaslwx.github.io/post/fb54166a.html</id>
+    <published>2020-03-13T01:55:04.000Z</published>
+    <updated>2020-03-13T05:11:37.647Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最新安装了CentOS8，在配置过程中出现报错Cannot update read-only repo&lt;br&gt;
+    
+    </summary>
+    
+      <category term="报错处理" scheme="https://longhaoaslwx.github.io/categories/%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="CentOS8" scheme="https://longhaoaslwx.github.io/tags/CentOS8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>kali工具之Nmap</title>
+    <link href="https://longhaoaslwx.github.io/post/b40299fc.html"/>
+    <id>https://longhaoaslwx.github.io/post/b40299fc.html</id>
+    <published>2020-03-11T12:46:16.000Z</published>
+    <updated>2020-03-19T09:48:51.760Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Nmap（Network Mapper）是一个探测计算机网络上得主机和服务的安全扫描软件，用来扫描网上电脑开放的网络连接端口。确定哪些服务运行在哪些连接端，并且推断计算机运行哪个操作系统（这是亦称 fingerprinting）。它是网络管理员必用的软件之一，以及用以评估网络系统安全。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="信息安全" scheme="https://longhaoaslwx.github.io/categories/%E4%BF%A1%E6%81%AF%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="kali" scheme="https://longhaoaslwx.github.io/tags/kali/"/>
+    
+      <category term="工具" scheme="https://longhaoaslwx.github.io/tags/%E5%B7%A5%E5%85%B7/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Liunx之有趣命令</title>
+    <link href="https://longhaoaslwx.github.io/post/1c70c131.html"/>
+    <id>https://longhaoaslwx.github.io/post/1c70c131.html</id>
+    <published>2020-03-06T18:55:18.000Z</published>
+    <updated>2020-03-07T14:57:52.823Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;几种有趣的Linux命令，不同Linux系统是不一样的安装命令，有些安装源可能没有部分。安装这些有趣的工具要提前配置好网络源。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux学习" scheme="https://longhaoaslwx.github.io/categories/Linux%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="linux" scheme="https://longhaoaslwx.github.io/tags/linux/"/>
+    
+      <category term="有趣命令" scheme="https://longhaoaslwx.github.io/tags/%E6%9C%89%E8%B6%A3%E5%91%BD%E4%BB%A4/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>redhat7 Linux配置yum源（本地源与网络源）</title>
+    <link href="https://longhaoaslwx.github.io/post/fa930eff.html"/>
+    <id>https://longhaoaslwx.github.io/post/fa930eff.html</id>
+    <published>2020-03-05T14:39:32.000Z</published>
+    <updated>2020-03-07T08:45:11.184Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天的linux课堂作业（一）&lt;br&gt;
+    
+    </summary>
+    
+      <category term="Linux学习" scheme="https://longhaoaslwx.github.io/categories/Linux%E5%AD%A6%E4%B9%A0/"/>
+    
+    
+      <category term="linux" scheme="https://longhaoaslwx.github.io/tags/linux/"/>
+    
+      <category term="基本配置" scheme="https://longhaoaslwx.github.io/tags/%E5%9F%BA%E6%9C%AC%E9%85%8D%E7%BD%AE/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Connection reset by [server_ip] port 22(hexo d部署博客上传github报错)</title>
+    <link href="https://longhaoaslwx.github.io/post/3b1bd6ea.html"/>
+    <id>https://longhaoaslwx.github.io/post/3b1bd6ea.html</id>
+    <published>2020-03-04T14:27:41.000Z</published>
+    <updated>2020-03-07T08:44:17.573Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;有好几天没上传博客，今晚上传就报错了…无语&lt;br&gt;最后发现是自闭了。。。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="报错处理" scheme="https://longhaoaslwx.github.io/categories/%E6%8A%A5%E9%94%99%E5%A4%84%E7%90%86/"/>
+    
+    
+      <category term="Hexo" scheme="https://longhaoaslwx.github.io/tags/Hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络原理学习笔记（五）</title>
+    <link href="https://longhaoaslwx.github.io/post/2c9ce932.html"/>
+    <id>https://longhaoaslwx.github.io/post/2c9ce932.html</id>
+    <published>2020-03-01T09:48:58.000Z</published>
+    <updated>2020-03-04T09:50:43.311Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;看视频的最后几个视频总结&lt;br&gt;
+    
+    </summary>
+    
+      <category term="网络安全" scheme="https://longhaoaslwx.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="计算机网络" scheme="https://longhaoaslwx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="网络基础" scheme="https://longhaoaslwx.github.io/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>运筹学基础学习笔记（三）</title>
+    <link href="https://longhaoaslwx.github.io/post/cd70e9b8.html"/>
+    <id>https://longhaoaslwx.github.io/post/cd70e9b8.html</id>
+    <published>2020-02-29T20:52:29.000Z</published>
+    <updated>2020-03-15T06:34:43.049Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;无论在日常生活中或管理工作中，人们都会经常面临各种带决策的问题，因此决策方法的应用是具有广泛的普遍性的。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="专升本学习笔记" scheme="https://longhaoaslwx.github.io/categories/%E4%B8%93%E5%8D%87%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="运筹学基础" scheme="https://longhaoaslwx.github.io/tags/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="专升本" scheme="https://longhaoaslwx.github.io/tags/%E4%B8%93%E5%8D%87%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Markdown学习笔记之数学符号及公式</title>
+    <link href="https://longhaoaslwx.github.io/post/b043045b.html"/>
+    <id>https://longhaoaslwx.github.io/post/b043045b.html</id>
+    <published>2020-02-28T09:56:38.000Z</published>
+    <updated>2020-02-29T16:21:22.188Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;写博客经常要用到一些数学公式，在Markdown中写数学公式则非常重要。既可以直观地描述数学公式，也便于读者理解。所以将一些常用的数学公式的写法记录下来，以备查询。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="基本操作" scheme="https://longhaoaslwx.github.io/categories/%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C/"/>
+    
+    
+      <category term="Markdown" scheme="https://longhaoaslwx.github.io/tags/Markdown/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络原理学习笔记（四）</title>
+    <link href="https://longhaoaslwx.github.io/post/43022c75.html"/>
+    <id>https://longhaoaslwx.github.io/post/43022c75.html</id>
+    <published>2020-02-27T03:43:06.000Z</published>
+    <updated>2020-03-23T07:43:21.490Z</updated>
+    
+    <summary type="html">
+    
+      
+      
+        
+        
+          &lt;link rel=&quot;stylesheet&quot; class=&quot;aplayer-secondary-style-marker&quot; href=&quot;\assets\css\APlayer.min.css&quot;&gt;&lt;script src=&quot;\assets\js\APlayer.min.js&quot;
+        
+      
+    
+    </summary>
+    
+      <category term="网络安全" scheme="https://longhaoaslwx.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="计算机网络" scheme="https://longhaoaslwx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="网络基础" scheme="https://longhaoaslwx.github.io/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络原理学习笔记（三）</title>
+    <link href="https://longhaoaslwx.github.io/post/f42f3510.html"/>
+    <id>https://longhaoaslwx.github.io/post/f42f3510.html</id>
+    <published>2020-02-27T02:51:08.000Z</published>
+    <updated>2020-02-29T16:08:53.652Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;继续无聊地记笔记&lt;br&gt;
+    
+    </summary>
+    
+      <category term="网络安全" scheme="https://longhaoaslwx.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="计算机网络" scheme="https://longhaoaslwx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="网络基础" scheme="https://longhaoaslwx.github.io/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>运筹学基础学习笔记（二）</title>
+    <link href="https://longhaoaslwx.github.io/post/806e4aea.html"/>
+    <id>https://longhaoaslwx.github.io/post/806e4aea.html</id>
+    <published>2020-02-25T12:47:42.000Z</published>
+    <updated>2020-02-28T06:22:56.473Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;为4月份的考试做准备。&lt;br&gt;
+    
+    </summary>
+    
+      <category term="专升本学习笔记" scheme="https://longhaoaslwx.github.io/categories/%E4%B8%93%E5%8D%87%E6%9C%AC%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/"/>
+    
+    
+      <category term="运筹学基础" scheme="https://longhaoaslwx.github.io/tags/%E8%BF%90%E7%AD%B9%E5%AD%A6%E5%9F%BA%E7%A1%80/"/>
+    
+      <category term="专升本" scheme="https://longhaoaslwx.github.io/tags/%E4%B8%93%E5%8D%87%E6%9C%AC/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计算机网络原理学习笔记（二）</title>
+    <link href="https://longhaoaslwx.github.io/post/b9319642.html"/>
+    <id>https://longhaoaslwx.github.io/post/b9319642.html</id>
+    <published>2020-02-25T09:43:24.000Z</published>
+    <updated>2020-02-27T02:50:21.194Z</updated>
+    
+    <summary type="html">
+    
+      &lt;p&gt;整理第二波&lt;br&gt;
+    
+    </summary>
+    
+      <category term="网络安全" scheme="https://longhaoaslwx.github.io/categories/%E7%BD%91%E7%BB%9C%E5%AE%89%E5%85%A8/"/>
+    
+    
+      <category term="计算机网络" scheme="https://longhaoaslwx.github.io/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/"/>
+    
+      <category term="网络基础" scheme="https://longhaoaslwx.github.io/tags/%E7%BD%91%E7%BB%9C%E5%9F%BA%E7%A1%80/"/>
+    
+  </entry>
+  
+</feed>

@@ -1,0 +1,2328 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.css">
+
+
+
+  
+  
+    
+      
+    
+    
+      
+    
+  <script src="/cdn.jsdelivr.net/npm/pace-js@1/pace.min.js"></script>
+  <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/pace/1.0.2/themes/blue/pace-theme-minimal.min.css">
+
+
+
+  
+  
+  <link rel="stylesheet" href="/lib/Han/dist/han.min.css?v=3.3">
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+  <link rel="stylesheet" href="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.css">
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+
+  
+
+  
+    
+      
+    
+
+    
+  
+
+  
+    
+    
+    <link rel="stylesheet" href="//fonts.lug.ustc.edu.cn/css?family=Lato:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|Roboto Mono:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext">
+  
+
+
+
+
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2">
+
+<link rel="stylesheet" href="/css/main.css?v=7.1.1">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/hacker原.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/hacker32.png?v=7.1.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/hacker16.png?v=7.1.1">
+
+
+  <link rel="mask-icon" href="/images/hacker.svg?v=7.1.1" color="#222">
+
+
+
+
+
+
+
+<script id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '7.1.1',
+    sidebar: {"position":"left","width":240,"display":"always","padding":18,"offset":12,"onmobile":true,"dimmer":false},
+    back2top: true,
+    back2top_sidebar: true,
+    fancybox: true,
+    fastclick: true,
+    lazyload: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"shrinkIn","post_header":"slideLeftIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideDownIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="前两天，某人希望我写一个课堂用的随机点名的程序 项目分析项目需求用python制作一个可以课堂上随机点名的工具 项目思路Version1.0：  上传并读取表格名单数据 —— xlrd库 及 tkinter库中的filedialog模块  做个GUI界面 —— tkinter库  利用随机数抽取姓名 —— random库  时间显示  日志写入   因为是第一次用python的这些库，所以有些功能">
+<meta name="keywords" content="Python,项目">
+<meta property="og:type" content="article">
+<meta property="og:title" content="用python制作一个课堂随机点名工具">
+<meta property="og:url" content="https://longhaoaslwx.github.io/post/8731d67a.html">
+<meta property="og:site_name" content="龍之随笔">
+<meta property="og:description" content="前两天，某人希望我写一个课堂用的随机点名的程序 项目分析项目需求用python制作一个可以课堂上随机点名的工具 项目思路Version1.0：  上传并读取表格名单数据 —— xlrd库 及 tkinter库中的filedialog模块  做个GUI界面 —— tkinter库  利用随机数抽取姓名 —— random库  时间显示  日志写入   因为是第一次用python的这些库，所以有些功能">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="https://s1.ax1x.com/2020/03/23/8o1zlV.jpg">
+<meta property="og:updated_time" content="2020-03-22T16:33:17.530Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="用python制作一个课堂随机点名工具">
+<meta name="twitter:description" content="前两天，某人希望我写一个课堂用的随机点名的程序 项目分析项目需求用python制作一个可以课堂上随机点名的工具 项目思路Version1.0：  上传并读取表格名单数据 —— xlrd库 及 tkinter库中的filedialog模块  做个GUI界面 —— tkinter库  利用随机数抽取姓名 —— random库  时间显示  日志写入   因为是第一次用python的这些库，所以有些功能">
+<meta name="twitter:image" content="https://s1.ax1x.com/2020/03/23/8o1zlV.jpg">
+
+
+
+  <link rel="alternate" href="/atom.xml" title="龍之随笔" type="application/atom+xml">
+
+
+
+  
+  
+  <link rel="canonical" href="https://longhaoaslwx.github.io/post/8731d67a">
+
+
+
+<script id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>用python制作一个课堂随机点名工具 | 龍之随笔</title>
+  
+
+
+
+
+
+
+  <script>
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?3970325a12ea6cbaa2445c288d72b9e0";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .motion-element,
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-title { opacity: initial; }
+
+  .use-motion .logo,
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+ 
+  
+    <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9">
+  
+  <!-- live2d娘 -->
+  <script src="/live2d-widget/autoload.js"></script>
+  <!--    类知乎卡片链接   -->
+  <script type="text/javascript" src="/js/src/linkcard.js"></script>
+  <!--     代码块复制功能   -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+
+  <!-- 页面点击小红心 -->
+  <script type="text/javascript" src="/js/src/clicklove.js"></script>
+  <!-- 知乎卡片 
+  <script type="text/javascript" src="/js/src/linkcard.js"></script>
+  -->
+  <!-- 网站标题欺骗  -->
+  <script type="text/javascript" src="/js/src/crash_cheat.js"></script>
+  <!--  雪花特效  -->
+  <script type="text/javascript" src="/js/src/snow.js"></script>
+  <!-- <script src="https://lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script> -->
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">龍之随笔</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="切换导航栏">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/" rel="section"><i class="menu-item-icon fa fa-fw fa-home"></i> <br>首页</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/tags/" rel="section"><i class="menu-item-icon fa fa-fw fa-tags"></i> <br>标签<span class="badge">32</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/categories/" rel="section"><i class="menu-item-icon fa fa-fw fa-bookmark"></i> <br>分类<span class="badge">10</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/archives/" rel="section"><i class="menu-item-icon fa fa-fw fa-archive"></i> <br>归档<span class="badge">40</span></a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/about/" rel="section"><i class="menu-item-icon fa fa-fw fa-user"></i> <br>关于</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-留言板">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/guestbook/" rel="section"><i class="menu-item-icon fa fa-fw fa-comments"></i> <br>留言板</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-map">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/map/" rel="section"><i class="menu-item-icon fa fa-fw fa-map"></i> <br>访客地图</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-links">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/links/" rel="section"><i class="menu-item-icon fa fa-fw fa-address-book"></i> <br>网站</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-books">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/books" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>书架</a>
+
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-movies">
+
+    
+    
+    
+      
+    
+
+    
+      
+    
+
+    <a href="/movies" rel="section"><i class="menu-item-icon fa fa-fw fa-question-circle"></i> <br>电影</a>
+
+  </li>
+
+      
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br>搜索</a>
+        </li>
+      
+    </ul>
+  
+
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off" placeholder="搜索..." spellcheck="false" type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+  
+  
+
+  
+
+  <span class="exturl github-corner" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xvbmdoYW9hc2x3eA==" title="欢迎关注我的GitHub！" aria-label="欢迎关注我的GitHub！"><svg width="80" height="80" viewbox="0 0 250 250" style="fill:#FD6C6C; color:#fff; position: absolute; top: 0; border: 0; right: 0;" aria-hidden="true"><path d="M0,0 L115,115 L130,115 L142,142 L250,250 L250,0 Z"/><path d="M128.3,109.0 C113.8,99.7 119.0,89.6 119.0,89.6 C122.0,82.7 120.5,78.6 120.5,78.6 C119.2,72.0 123.4,76.3 123.4,76.3 C127.3,80.9 125.5,87.3 125.5,87.3 C122.9,97.6 130.6,101.9 134.4,103.2" fill="currentColor" style="transform-origin: 130px 106px;" class="octo-arm"/><path d="M115.0,115.0 C114.9,115.1 118.7,116.5 119.8,115.4 L133.7,101.6 C136.9,99.2 139.9,98.4 142.2,98.6 C133.8,88.0 127.5,74.4 143.8,58.0 C148.5,53.4 154.0,51.2 159.7,51.0 C160.3,49.4 163.2,43.6 171.4,40.1 C171.4,40.1 176.1,42.5 178.8,56.2 C183.1,58.6 187.2,61.8 190.9,65.4 C194.5,69.0 197.7,73.2 200.1,77.6 C213.8,80.2 216.3,84.9 216.3,84.9 C212.7,93.1 206.9,96.0 205.4,96.6 C205.1,102.4 203.0,107.8 198.3,112.5 C181.9,128.9 168.3,122.5 157.7,114.1 C157.9,116.9 156.7,120.9 152.7,124.9 L141.0,136.5 C139.8,137.7 141.6,141.9 141.8,141.8 Z" fill="currentColor" class="octo-body"/></svg></span>
+
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+          <div class="main-increase">
+            <!-- 一句话+天气预报  -->
+            <script type="text/javascript" src="https://api.uixsj.cn/hitokoto/en.php?code=js"></script>
+            <div id="enhitokoto">
+              <iframe scrolling="no" src="https://tianqiapi.com/api.php?style=tb&skin=sogou" frameborder="0" width="350" height="24" allowtransparency="true"></iframe><br>
+              <script>enhitokoto()</script>             
+            </div>
+          </div>
+
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+    <div class="reading-progress-bar"></div>
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://longhaoaslwx.github.io/post/8731d67a.html">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="龍皓">
+      <meta itemprop="description" content="你的时间有限，所以不要浪费时间去过别人的生活">
+      <meta itemprop="image" content="/images/myavatar.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="龍之随笔">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">用python制作一个课堂随机点名工具
+
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          
+          
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+
+              
+                
+              
+
+              <time title="创建时间：2020-03-22 19:45:54" itemprop="dateCreated datePublished" datetime="2020-03-22T19:45:54+08:00">2020-03-22</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">更新于</span>
+                
+                <time title="修改时间：2020-03-23 00:33:17" itemprop="dateModified" datetime="2020-03-23T00:33:17+08:00">2020-03-23</time>
+              
+            
+          </span>
+
+          
+            <span class="post-category">
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/编程基础/" itemprop="url" rel="index"><span itemprop="name">编程基础</span></a></span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+            
+              
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+            
+                <span class="post-meta-item-text">评论数：</span>
+                <a href="/post/8731d67a.html#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/post/8731d67a.html" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+            <span id="/post/8731d67a.html" class="leancloud_visitors" data-flag-title="用python制作一个课堂随机点名工具">
+              <span class="post-meta-divider">|</span>
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              
+                <span class="post-meta-item-text">阅读次数：</span>
+              
+                <span class="leancloud-visitors-count"></span>
+            </span>
+          
+
+          
+            <span class="post-meta-divider">|</span>
+            <span class="post-meta-item-icon">
+            <i class="fa fa-eye"></i>
+             阅读次数： 
+            <span class="busuanzi-value" id="busuanzi_value_page_pv"></span>
+            </span>
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">本文字数：</span>
+                
+                <span title="本文字数">6.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">阅读时长 &asymp;</span>
+                
+                <span title="阅读时长">6 分钟</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body han-init-context" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>前两天，某人希望我写一个课堂用的随机点名的程序</p>
+<h2 id="项目分析"><a href="#项目分析" class="headerlink" title="项目分析"></a>项目分析</h2><h3 id="项目需求"><a href="#项目需求" class="headerlink" title="项目需求"></a>项目需求</h3><p>用python制作一个可以课堂上随机点名的工具</p>
+<h3 id="项目思路"><a href="#项目思路" class="headerlink" title="项目思路"></a>项目思路</h3><p>Version1.0：</p>
+<ol>
+<li><p>上传并读取表格名单数据 —— xlrd库 及 tkinter库中的filedialog模块</p>
+</li>
+<li><p>做个GUI界面 —— tkinter库</p>
+</li>
+<li><p>利用随机数抽取姓名 —— random库</p>
+</li>
+<li><p>时间显示</p>
+</li>
+<li><p>日志写入</p>
+</li>
+</ol>
+<p>因为是第一次用python的这些库，所以有些功能不太好实现，就先做个简单一点的随机点名器。</p>
+<h2 id="初步页面搭建"><a href="#初步页面搭建" class="headerlink" title="初步页面搭建"></a>初步页面搭建</h2><p>我的GUI界面用的是Python中的Tkinter库，我们初步的功能是随机点名和日志写入</p>
+<p>首先，把初步的界面框架给搭建出来<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dianming</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 第1步，建立窗口window</span></span><br><span class="line">        self.window = tk.Tk()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第2步，给窗口的可视化起名字</span></span><br><span class="line">        self.window.title(<span class="string">'班级点名程序'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第3步，设定窗口的大小(长＊宽)</span></span><br><span class="line">        self.window.geometry(<span class="string">'600x400'</span>)</span><br><span class="line"></span><br><span class="line">         <span class="comment"># 创建str类型</span></span><br><span class="line">        self.text = tk.StringVar() </span><br><span class="line">        self.filename = tk.StringVar()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 获取方法返回数据</span></span><br><span class="line">        self.data = self.dqdata()</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 抽选人数的方法</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dianming</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 负责把选中的人写入到log日志文件里面</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">savedesc</span><span class="params">(self, desc)</span>:</span></span><br><span class="line">        <span class="keyword">pass</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 主函数负责绘制</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 绘制点名信息</span></span><br><span class="line">        l2 = tk.Label(self.window, fg=<span class="string">'red'</span>, textvariable=self.text, width=<span class="number">500</span>, height=<span class="number">3</span>)</span><br><span class="line">        l2.config(font=<span class="string">'Helvetica -%d bold'</span> % <span class="number">30</span>)</span><br><span class="line">        l2.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 绘制点名按钮</span></span><br><span class="line">        btntake = tk.Button(self.window, text=<span class="string">"开始点名"</span>, width=<span class="number">15</span>, height=<span class="number">2</span>, command=self.dianming)</span><br><span class="line">        btntake.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进入循环</span></span><br><span class="line">        self.window.mainloop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    dianming = Dianming()</span><br><span class="line">    dianming.main()</span><br></pre></td></tr></table></figure></p>
+<p>当我们点击 <code>开始点名</code> 的时候，就会执行 <code>dianming</code> 这个函数,此函数负责开始随机抽取数据中某一个数据。</p>
+<h2 id="数据获取"><a href="#数据获取" class="headerlink" title="数据获取"></a>数据获取</h2><p>每个班级都有自己的一份班级成员名单，一般是表格格式（.xlsx为后缀）。当我们初始化完程序的时候，我们需要把本地的excel表格数据，读取到程序中，才能开始随机抽取数据。</p>
+<p>首先，可以拿自己班的表格或者创建一个表格写假数据，接下来通过 <code>tkinter</code> 库中的 <code>filedialog</code> 模块，将表格数据传入 <code>selectfile</code> 变量中,并进行读取</p>
+<p>我们写个函数读取，因为懒，我就将上传功能和读取数据一块写一个方法里去了，省事</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 上传并读取数据</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dqdata</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="comment"># 上传选中的表格数据传入到selectfile变量中</span></span><br><span class="line">    <span class="comment"># askopenfilename 1次上传1个；askopenfilenames1次上传多个</span></span><br><span class="line">    selectfile = tk.filedialog.askopenfilename() </span><br><span class="line"></span><br><span class="line">    <span class="comment"># 将选择的selectfile的文件数据传入namelist变量</span></span><br><span class="line">    namelist = xlrd.open_workbook(selectfile)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># sheet表索引从0开始，也可以用表名，不过语句不同而已</span></span><br><span class="line">    sheet1 = namelist.sheet_by_index(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 读取表格中的第三列内容，如有需要，可自行更改</span></span><br><span class="line">    data = list(sheet1.col_values(<span class="number">2</span>))</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 把姓名 去掉</span></span><br><span class="line">    data.pop(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 返回数据</span></span><br><span class="line">    <span class="keyword">return</span> (data)</span><br></pre></td></tr></table></figure>
+<p>这个函数中返回的data就是从本地选中表格读取到的成员名单</p>
+<h2 id="点名实现"><a href="#点名实现" class="headerlink" title="点名实现"></a>点名实现</h2><p>我们可以设定随即次数，例如50次，并且将后几次的随机速度降下来，制造类似于抽奖那种刺激感。</p>
+<p>将之前的 <code>dianming</code> 函数填充一下内容：<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 抽选人数</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">dianming</span><span class="params">(self)</span>:</span></span><br><span class="line">    <span class="keyword">for</span> s <span class="keyword">in</span> range(<span class="number">50</span>):</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 后几秒随即速度慢点，制造紧张气氛</span></span><br><span class="line">        desc = <span class="string">''</span></span><br><span class="line">        <span class="keyword">if</span> s == <span class="number">47</span>:</span><br><span class="line">            time.sleep(<span class="number">0.5</span>)</span><br><span class="line">        <span class="keyword">elif</span> s == <span class="number">48</span>:</span><br><span class="line">            time.sleep(<span class="number">0.6</span>)</span><br><span class="line">        <span class="keyword">elif</span> s == <span class="number">48</span>:</span><br><span class="line">            time.sleep(<span class="number">0.7</span>)</span><br><span class="line">        <span class="keyword">elif</span> s == <span class="number">49</span>:</span><br><span class="line">            time.sleep(<span class="number">0.9</span>)</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            time.sleep(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># classes存放抽取结果</span></span><br><span class="line">        classes = random.sample(self.data,<span class="number">1</span>) </span><br><span class="line">        <span class="comment"># 后面的1为抽取人数，如果需要抽取2个，将1改为2，并将下面的代码再复制一次，并改变读取结果位置，如果不改变，则都为第一个结果</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 返回界面的抽取信息</span></span><br><span class="line">        desc += <span class="string">"恭喜这位同学被选中了:%s\n"</span> % classes[<span class="number">0</span>]</span><br><span class="line">        <span class="comment"># desc += "恭喜这位同学被选中了:%s\n" % classes[1] </span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 记得写这个，否则抽取结果无法返回到界面之中</span></span><br><span class="line">        <span class="keyword">if</span> s == <span class="number">49</span>:</span><br><span class="line">            self.savedesc(desc)  <span class="comment"># 写入日志</span></span><br><span class="line">        self.text.set(desc)  <span class="comment"># 设置内容</span></span><br><span class="line">        self.window.update()  <span class="comment"># 屏幕更新</span></span><br></pre></td></tr></table></figure></p>
+<h2 id="日志实现"><a href="#日志实现" class="headerlink" title="日志实现"></a>日志实现</h2><p>日志主要是为了记录点名的人及点名时间，我们都要把这些信息写入到本地，这样，之后老师查看考勤就可以点过谁了。当最后点名的人确定后，会调用 <code>savedesc</code> 这个函数。</p>
+<p>代码实现：<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 保存点中的人到日志去</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">savedesc</span><span class="params">(<span class="keyword">self</span>, desc)</span></span><span class="symbol">:</span></span><br><span class="line">    with open(<span class="string">'log.txt'</span>, <span class="string">'a'</span>, encoding=<span class="string">'utf-8'</span>) as <span class="symbol">f:</span></span><br><span class="line">        f.write(<span class="keyword">self</span>.gettime() + <span class="string">"\n"</span> + desc)</span><br></pre></td></tr></table></figure></p>
+<h2 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h2><p>写完最基本的功能，那再加点信息提示修饰一下，例如：时间日期，班级人数等等</p>
+<p>上面模块的注释有些是事后额外加的，因此全部代码可能跟上面有一点区别。<br>全部代码如下：</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#  _*_ coding: utf-8 _*_</span></span><br><span class="line"><span class="comment">#  @ProjectName: project_test</span></span><br><span class="line"><span class="comment">#  @File：Random_call.py</span></span><br><span class="line"><span class="comment">#  @Time: 2020/3/22 0022 6:25</span></span><br><span class="line"><span class="comment">#  @User: Administrator</span></span><br><span class="line"><span class="comment">#  @Author: 龍皓</span></span><br><span class="line"><span class="comment">#  @Software: PyCharm</span></span><br><span class="line"><span class="comment">#  @Desc: 班级随机点名</span></span><br><span class="line"><span class="comment">#　@Version: v1.0</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> random</span><br><span class="line"><span class="keyword">import</span> xlrd</span><br><span class="line"><span class="keyword">import</span> tkinter <span class="keyword">as</span> tk</span><br><span class="line"><span class="keyword">import</span> time</span><br><span class="line"><span class="keyword">import</span> datetime</span><br><span class="line"><span class="keyword">from</span> tkinter <span class="keyword">import</span> filedialog</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dianming</span><span class="params">()</span>:</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># 初始化</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="comment"># 第1步，建立窗口window</span></span><br><span class="line">        self.window = tk.Tk()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第2步，给窗口的可视化起名字</span></span><br><span class="line">        self.window.title(<span class="string">'班级点名程序'</span>)</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 第3步，设定窗口的大小(长＊宽)</span></span><br><span class="line">        self.window.geometry(<span class="string">'600x400'</span>)</span><br><span class="line">        self.text = tk.StringVar()  <span class="comment"># 创建str类型</span></span><br><span class="line">        <span class="comment"># 获取星期几</span></span><br><span class="line">        d = datetime.datetime.now()</span><br><span class="line">        self.day = d.weekday() + <span class="number">1</span></span><br><span class="line"></span><br><span class="line">        self.filename = tk.StringVar()</span><br><span class="line">        <span class="comment"># 数据</span></span><br><span class="line">        self.data = self.dqdata()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dqdata</span><span class="params">(self)</span>:</span></span><br><span class="line">        selectfile = tk.filedialog.askopenfilename() <span class="comment"># askopenfilename 1次上传1个；askopenfilenames1次上传多个</span></span><br><span class="line">        <span class="comment"># 将选择的selectfile的文件数据传入namelist变量</span></span><br><span class="line">        namelist = xlrd.open_workbook(selectfile)</span><br><span class="line">        <span class="comment"># sheet索引从0开始</span></span><br><span class="line">        sheet1 = namelist.sheet_by_index(<span class="number">0</span>)</span><br><span class="line">        <span class="comment"># 读取第三列内容，如有需要，可自行更改</span></span><br><span class="line">        data = list(sheet1.col_values(<span class="number">2</span>))</span><br><span class="line">        <span class="comment"># 把姓名 去掉</span></span><br><span class="line">        data.pop(<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">return</span> (data)</span><br><span class="line"></span><br><span class="line">    <span class="comment"># 抽选人数</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">dianming</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="keyword">for</span> s <span class="keyword">in</span> range(<span class="number">50</span>):</span><br><span class="line">            <span class="string">'''</span></span><br><span class="line"><span class="string">            后几秒慢点，制造紧张气氛</span></span><br><span class="line"><span class="string">            '''</span></span><br><span class="line">            desc = <span class="string">''</span></span><br><span class="line">            <span class="keyword">if</span> s == <span class="number">47</span>:</span><br><span class="line">                time.sleep(<span class="number">0.5</span>)</span><br><span class="line">            <span class="keyword">elif</span> s == <span class="number">48</span>:</span><br><span class="line">                time.sleep(<span class="number">0.6</span>)</span><br><span class="line">            <span class="keyword">elif</span> s == <span class="number">48</span>:</span><br><span class="line">                time.sleep(<span class="number">0.7</span>)</span><br><span class="line">            <span class="keyword">elif</span> s == <span class="number">49</span>:</span><br><span class="line">                time.sleep(<span class="number">0.9</span>)</span><br><span class="line">            <span class="keyword">else</span>:</span><br><span class="line">                time.sleep(<span class="number">0.1</span>)</span><br><span class="line"></span><br><span class="line">            classes = random.sample(self.data,<span class="number">1</span>)</span><br><span class="line">            desc += <span class="string">"恭喜这位同学被选中了:%s\n"</span> % classes[<span class="number">0</span>]</span><br><span class="line"></span><br><span class="line">            <span class="keyword">if</span> s == <span class="number">49</span>:</span><br><span class="line">                self.savedesc(desc)  <span class="comment"># 写入日志</span></span><br><span class="line">            self.text.set(desc)  <span class="comment"># 设置内容</span></span><br><span class="line">            self.window.update()  <span class="comment"># 屏幕更新</span></span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">gettime</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        格式化时间</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">return</span> time.strftime(<span class="string">'%Y-%m-%d'</span>, time.localtime(time.time())) + <span class="string">"  星期"</span> + str(self.day)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">savedesc</span><span class="params">(self, desc)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        负责把选中的人写入到log里面</span></span><br><span class="line"><span class="string">        :param desc:</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="keyword">with</span> open(<span class="string">'log.txt'</span>, <span class="string">'a'</span>, encoding=<span class="string">'utf-8'</span>) <span class="keyword">as</span> f:</span><br><span class="line">            f.write(self.gettime() + <span class="string">"\n"</span> + desc)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">main</span><span class="params">(self)</span>:</span></span><br><span class="line">        <span class="string">'''</span></span><br><span class="line"><span class="string">        主函数负责绘制</span></span><br><span class="line"><span class="string">        :return:</span></span><br><span class="line"><span class="string">        '''</span></span><br><span class="line">        <span class="comment"># 绘制日期、班级总人数等</span></span><br><span class="line">        now = time.strftime(<span class="string">'%Y-%m-%d'</span>, time.localtime(time.time())) + <span class="string">"  星期"</span> + str(self.day)</span><br><span class="line">        now += <span class="string">"\n班级总人数:%s人"</span> % str(len(self.data))</span><br><span class="line">        now += <span class="string">"\n正在合理计算中\n"</span></span><br><span class="line"></span><br><span class="line">        l1 = tk.Label(self.window, fg=<span class="string">'red'</span>, text=now, width=<span class="number">500</span>, height=<span class="number">5</span>)</span><br><span class="line">        l1.config(font=<span class="string">'Helvetica -%d bold'</span> % <span class="number">15</span>)</span><br><span class="line">        l1.pack()  <span class="comment"># 安置标签</span></span><br><span class="line"></span><br><span class="line">        <span class="comment"># 绘制点名信息</span></span><br><span class="line">        l2 = tk.Label(self.window, fg=<span class="string">'red'</span>, textvariable=self.text, width=<span class="number">500</span>, height=<span class="number">3</span>)</span><br><span class="line">        l2.config(font=<span class="string">'Helvetica -%d bold'</span> % <span class="number">30</span>)</span><br><span class="line">        l2.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 绘制点名按钮</span></span><br><span class="line">        btntake = tk.Button(self.window, text=<span class="string">"开始点名"</span>, width=<span class="number">15</span>, height=<span class="number">2</span>, command=self.dianming)</span><br><span class="line">        btntake.pack()</span><br><span class="line"></span><br><span class="line">        <span class="comment"># 进入循环</span></span><br><span class="line">        self.window.mainloop()</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">'__main__'</span>:</span><br><span class="line">    dianming = Dianming()</span><br><span class="line">    dianming.main()</span><br></pre></td></tr></table></figure>
+<h2 id="程序打包"><a href="#程序打包" class="headerlink" title="程序打包"></a>程序打包</h2><p>python的GUI程序，文件相对会比较大一点</p>
+<h3 id="安装Pyinstaller"><a href="#安装Pyinstaller" class="headerlink" title="安装Pyinstaller"></a>安装Pyinstaller</h3><p>官网：<span class="exturl" data-url="aHR0cDovL3d3dy5weWluc3RhbGxlci5vcmcv" title="http://www.pyinstaller.org/">http://www.pyinstaller.org/<i class="fa fa-external-link"></i></span></p>
+<p>使用pip命令安装<br><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip <span class="keyword">install</span> pyinstaller</span><br></pre></td></tr></table></figure></p>
+<p>转到程序的目录并运行：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">pyinstaller</span> <span class="selector-tag">-</span>选项（可带可不带）  <span class="selector-tag">yourprogram</span><span class="selector-class">.py</span></span><br></pre></td></tr></table></figure></p>
+<p>这会在你同级文件夹生成文件夹build、dist还有个yourprogram.spec文件。</p>
+<ul>
+<li>build：写入一些日志文件和工作文件</li>
+<li>dist：放可执行文件和其他内容</li>
+<li>.spec文件：包含以脚本文件作为参数运行pyinstaller（或pyi-makespec）时指定的选项所提供的大多数信息。</li>
+</ul>
+<p>一般我们只要保留可执行文件即可<br><img src="https://s1.ax1x.com/2020/03/23/8o1zlV.jpg" alt></p>
+<p>输入参数：</p>
+<ul>
+<li>-F 表示生成单个可执行文件</li>
+<li>-w 表示去掉控制台窗口，这在GUI界面时非常有用。不过如果是命令行程序的话那就把这个选项删除吧！</li>
+<li>-p 表示你自己自定义需要加载的类路径，一般情况下用不到</li>
+<li>-i 表示可执行文件的图标</li>
+</ul>
+<h2 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h2><p>这个程序花了接近半天，功能还有很多不完善，毕竟是Version1.0.<br>第一次学tkinter库和xlrd库，所以也在网上找了些类似的案例，来模仿借鉴。<br>原本还想着用os库，去实现当前文件名的，还有个登记迟到的功能，经几次尝试，可惜都不太会用，所以就暂时放弃了。<br>大家如果有兴趣，也可以顺着我或者原作者的思路去写一个更好的程序，当然，我也会继续学习，抽空把这个变得更完善些！最后建议，尽量初学还是教程视频的好，不然看文档是真的累，还容易出bug！</p>
+<p>参考博客：</p>
+<ol>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuamlhbnNodS5jb20vcC84Y2M4OTM3YjYzMjk=" title="https://www.jianshu.com/p/8cc8937b6329">https://www.jianshu.com/p/8cc8937b6329<i class="fa fa-external-link"></i></span></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L2R1YW5fbW9fcmFuL2FydGljbGUvZGV0YWlscy84MjQ5OTMxOD9kZXB0aF8xLXV0bV9zb3VyY2U9ZGlzdHJpYnV0ZS5wY19yZWxldmFudC5ub25lLXRhc2smYW1wO3V0bV9zb3VyY2U9ZGlzdHJpYnV0ZS5wY19yZWxldmFudC5ub25lLXRhc2s=" title="https://blog.csdn.net/duan_mo_ran/article/details/82499318?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task">https://blog.csdn.net/duan_mo_ran/article/details/82499318?depth_1-utm_source=distribute.pc_relevant.none-task&amp;utm_source=distribute.pc_relevant.none-task<i class="fa fa-external-link"></i></span></p>
+</li>
+</ol>
+<p>pyinstaller教程： </p>
+<ol>
+<li><p>python打包方法：<span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vaXQtdHN6L3AvMTA1MzQ2NTQuaHRtbA==" title="https://www.cnblogs.com/it-tsz/p/10534654.html">https://www.cnblogs.com/it-tsz/p/10534654.html<i class="fa fa-external-link"></i></span></p>
+</li>
+<li><p>pyinstaller官网：<span class="exturl" data-url="aHR0cDovL3d3dy5weWluc3RhbGxlci5vcmcv" title="http://www.pyinstaller.org/">http://www.pyinstaller.org/<i class="fa fa-external-link"></i></span></p>
+</li>
+<li><p>pyinstaller使用手册：<span class="exturl" data-url="aHR0cHM6Ly9weWluc3RhbGxlci5yZWFkdGhlZG9jcy5pby9lbi9zdGFibGUvdXNhZ2UuaHRtbA==" title="https://pyinstaller.readthedocs.io/en/stable/usage.html">https://pyinstaller.readthedocs.io/en/stable/usage.html<i class="fa fa-external-link"></i></span>     </p>
+</li>
+</ol>
+<p>tkinter库教程：</p>
+<ol>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuY25ibG9ncy5jb20vc2h3ZWUvcC85NDI3OTc1Lmh0bWwjRDE=" title="https://www.cnblogs.com/shwee/p/9427975.html#D1">https://www.cnblogs.com/shwee/p/9427975.html#D1<i class="fa fa-external-link"></i></span></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly93d3cuZWVmb2N1cy5jb20vbmlnaHRzZWFzL2Jsb2cvMTUtMDUvMzEyNjAxX2JhOTRlLmh0bWw=" title="https://www.eefocus.com/nightseas/blog/15-05/312601_ba94e.html">https://www.eefocus.com/nightseas/blog/15-05/312601_ba94e.html<i class="fa fa-external-link"></i></span></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cDovL3d3dy5kb2Npbi5jb20vcC00Mzg0MzAwMDQuaHRtbA==" title="http://www.docin.com/p-438430004.html">http://www.docin.com/p-438430004.html<i class="fa fa-external-link"></i></span></p>
+</li>
+<li><p><span class="exturl" data-url="aHR0cHM6Ly96aHVhbmxhbi56aGlodS5jb20vcC85MjAxNzIxNg==" title="https://zhuanlan.zhihu.com/p/92017216">https://zhuanlan.zhihu.com/p/92017216<i class="fa fa-external-link"></i></span> </p>
+</li>
+<li><p>廖雪峰：<span class="exturl" data-url="aHR0cHM6Ly93d3cubGlhb3h1ZWZlbmcuY29tL3dpa2kvMTAxNjk1OTY2MzYwMjQwMC8xMDE3Nzg2OTE0NTY2NTYw" title="https://www.liaoxuefeng.com/wiki/1016959663602400/1017786914566560">https://www.liaoxuefeng.com/wiki/1016959663602400/1017786914566560<i class="fa fa-external-link"></i></span></p>
+</li>
+<li><p>中文文档：<span class="exturl" data-url="aHR0cHM6Ly9jbG91ZC50ZW5jZW50LmNvbS9kZXZlbG9wZXIvc2VjdGlvbi8xMzcyMzQ3I3N0YWdlLTEwMDA0MDEyOQ==" title="https://cloud.tencent.com/developer/section/1372347#stage-100040129">https://cloud.tencent.com/developer/section/1372347#stage-100040129<i class="fa fa-external-link"></i></span></p>
+</li>
+<li><p>python标准库文档：<span class="exturl" data-url="aHR0cHM6Ly9kb2NzLnB5dGhvbi5vcmcvemgtY24vMy9saWJyYXJ5L3RrLmh0bWw=" title="https://docs.python.org/zh-cn/3/library/tk.html">https://docs.python.org/zh-cn/3/library/tk.html<i class="fa fa-external-link"></i></span>   </p>
+</li>
+<li><p>tkinter控件：<span class="exturl" data-url="aHR0cHM6Ly93d3cucGhwLmNuL3B5dGhvbi10dXRvcmlhbHMtNDEwMjY2Lmh0bWw=" title="https://www.php.cn/python-tutorials-410266.html">https://www.php.cn/python-tutorials-410266.html<i class="fa fa-external-link"></i></span></p>
+</li>
+</ol>
+
+      
+    </div>
+     <!-- 相关文章推荐 -->
+    
+      <!-- 
+
+-->
+
+
+    
+
+    
+    
+    
+    <div>
+      
+        <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:16px;">-------------本文结束<i class="fa fa-heart"></i>感谢您的阅读-------------</div>
+    
+</div>
+      
+    </div>
+    <div>
+      
+          
+<div class="my_post_copyright">
+  <script src="//cdn.bootcss.com/clipboard.js/1.5.10/clipboard.min.js"></script>
+  
+  <!-- JS库 sweetalert 可修改路径 -->
+  <script src="https://cdn.bootcss.com/jquery/2.0.0/jquery.min.js"></script>
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <p><span>本文标题:</span><a href="/post/8731d67a.html">用python制作一个课堂随机点名工具</a></p>
+  <p><span>文章作者:</span><a href="/" title="访问 龍皓 的个人博客">龍皓</a></p>
+  <p><span>发布时间:</span>2020年03月22日 - 19:45</p>
+  <p><span>最后更新:</span>2020年03月23日 - 00:33</p>
+  <p><span>原始链接:</span><a href="/post/8731d67a.html" title="用python制作一个课堂随机点名工具">https://longhaoaslwx.github.io/post/8731d67a.html</a>
+    <span class="copy-path" title="点击复制文章链接"><i class="fa fa-clipboard" data-clipboard-text="https://longhaoaslwx.github.io/post/8731d67a.html" aria-label="复制成功！"></i></span>
+  </p>
+  <p><span>许可协议:</span><i class="fa fa-creative-commons"></i> <a rel="license" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank" title="Attribution-NonCommercial-NoDerivatives 4.0 International (CC BY-NC-ND 4.0)">署名-非商业性使用-禁止演绎 4.0 国际</a> 转载请保留原文链接及作者。</p>  
+</div>
+<script> 
+    var clipboard = new Clipboard('.fa-clipboard');
+    $(".fa-clipboard").click(function(){
+      clipboard.on('success', function(){
+        swal({   
+          title: "",   
+          text: '复制成功',
+          icon: "success", 
+          showConfirmButton: true
+          });
+	});
+    });  
+</script>
+
+      
+    </div>
+    
+
+    
+      
+    
+    
+      <div>
+        <div id="reward-container">
+  <div>如果觉得可以，可以给点辣条钱吗？</div>
+  <button id="reward-button" disable="enable" onclick="var qr = document.getElementById(&quot;qr&quot;); qr.style.display = (qr.style.display === 'none') ? 'block' : 'none';">
+    打赏
+  </button>
+  <div id="qr" style="display: none;">
+
+    
+      
+      
+        
+      
+      <div style="display: inline-block">
+        <img src="/images/reward/wechatpay.png" alt="龍皓 微信支付">
+        <p>微信支付</p>
+      </div>
+    
+
+  </div>
+</div>
+
+      </div>
+    
+
+    <!--
+      <div>
+        
+
+
+
+
+  
+
+
+
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>龍皓</li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    
+    <a href="https://longhaoaslwx.github.io/post/8731d67a.html" title="用python制作一个课堂随机点名工具">https://longhaoaslwx.github.io/post/8731d67a.html</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <span class="exturl" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><i class="fa fa-fw fa-creative-commons"></i>BY-NC-SA</span> 许可协议。转载请注明出处！</li>
+</ul>
+
+      </div>
+
+    
+    -->
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Python/" rel="tag"><i class="fa fa-tag"></i> Python</a>
+          
+            <a href="/tags/项目/" rel="tag"><i class="fa fa-tag"></i> 项目</a>
+          
+        </div>
+      
+
+      
+      
+        <div class="post-widgets">
+        
+
+        
+
+        
+          
+          <div class="social_share">
+            
+            
+              <div id="needsharebutton-postbottom">
+                <span class="btn">
+                  <i class="fa fa-share-alt" aria-hidden="true"></i>
+                </span>
+              </div>
+            
+            
+          </div>
+        
+        </div>
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/post/733534d2.html" rel="prev" title="阿里云服务器搭建halo的艰辛之路">
+                <i class="fa fa-chevron-left"></i> 阿里云服务器搭建halo的艰辛之路
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/post/db7331ef.html" rel="next" title="liunx作业之用Apache搭建简易的Web网站服务器">
+                liunx作业之用Apache搭建简易的Web网站服务器 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+      
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+            <a href="/">  
+              <img class="site-author-image" itemprop="image" src="/images/myavatar.png" alt="龍皓">
+            </a>    
+            
+              <p class="site-author-name" itemprop="name">龍皓</p>
+              <div class="site-description motion-element" itemprop="description">你的时间有限，所以不要浪费时间去过别人的生活</div>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">40</span>
+                    <span class="site-state-item-name">日志</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  
+                    
+                      <a href="/categories/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">10</span>
+                    <span class="site-state-item-name">分类</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  
+                    
+                      <a href="/tags/">
+                    
+                  
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">32</span>
+                    <span class="site-state-item-name">标签</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9naXRodWIuY29tL2xvbmdoYW9hc2x3eC8=" title="GitHub &rarr; https://github.com/longhaoaslwx/"><i class="fa fa-fw fa-github"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <a href="/1170764787@qq.com" title="E-Mail &rarr; 1170764787@qq.com"><i class="fa fa-fw fa-envelope"></i></a>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9jbi5iaW5nLmNvbS8=" title="Bing &rarr; https://cn.bing.com/"><i class="fa fa-fw fa-github-alt"></i></span>
+                </span>
+              
+                <span class="links-of-author-item">
+                  
+                  
+                  
+                    
+                  
+                  <span class="exturl" data-url="aHR0cHM6Ly9iYWlkdS5jb20=" title="Baidu &rarr; https://baidu.com"><i class="fa fa-fw fa-firefox"></i></span>
+                </span>
+              
+            </div>
+          
+
+          
+             <div class="cc-license motion-element" itemprop="license">
+              
+              
+                
+              
+              
+              
+              <span class="exturl cc-opacity" data-url="aHR0cHM6Ly9jcmVhdGl2ZWNvbW1vbnMub3JnL2xpY2Vuc2VzL2J5LW5jLXNhLzQuMC9kZWVkLnpo"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></span>
+             </div>
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+      <div class="links-of-blogroll motion-element links-of-blogroll-block">
+        <div class="links-of-blogroll-title">
+          <!-- modify icon to fire by szw -->
+          <i class="fa fa-history fa-" aria-hidden="true"></i>
+          近期文章
+        </div>
+        <ul class="links-of-blogroll-list">
+          
+          
+            <li>
+              <a href="/post/14439e75.html" title="liunx作业之搭建FTP服务器" target="_blank">liunx作业之搭建FTP服务器</a>
+            </li>
+          
+            <li>
+              <a href="/post/dd504702.html" title="Wallpaper Engine之太空主题解锁" target="_blank">Wallpaper Engine之太空主题解锁</a>
+            </li>
+          
+            <li>
+              <a href="/post/733534d2.html" title="阿里云服务器搭建halo的艰辛之路" target="_blank">阿里云服务器搭建halo的艰辛之路</a>
+            </li>
+          
+            <li>
+              <a href="/post/8731d67a.html" title="用python制作一个课堂随机点名工具" target="_blank">用python制作一个课堂随机点名工具</a>
+            </li>
+          
+            <li>
+              <a href="/post/db7331ef.html" title="liunx作业之用Apache搭建简易的Web网站服务器" target="_blank">liunx作业之用Apache搭建简易的Web网站服务器</a>
+            </li>
+          
+        </ul>
+      </div>
+
+
+<div id="days"></div>
+<script>
+function show_date_time(){
+    window.setTimeout("show_date_time()", 1000);
+    BirthDay=new Date("02/8/2020 00:00:00");
+    today=new Date();
+    timeold=(today.getTime()-BirthDay.getTime());
+    sectimeold=timeold/1000
+    secondsold=Math.floor(sectimeold);
+    msPerDay=24*60*60*1000
+    e_daysold=timeold/msPerDay
+    daysold=Math.floor(e_daysold);
+    e_hrsold=(e_daysold-daysold)*24;
+    hrsold=setzero(Math.floor(e_hrsold));
+    e_minsold=(e_hrsold-hrsold)*60;
+    minsold=setzero(Math.floor((e_hrsold-hrsold)*60));
+    seconds=setzero(Math.floor((e_minsold-minsold)*60));
+    document.getElementById('days').innerHTML="本博客已安全运行 "+daysold+" 天 "+hrsold+" 小时 "+minsold+" 分 "+seconds+" 秒";
+}
+function setzero(i) {
+    if (i<10) {
+        i="0" + i
+    };
+    return i;
+}
+show_date_time();
+</script>
+
+
+
+<!-- 一句话
+<script type="text/javascript" src="https://api.uixsj.cn/hitokoto/en.php?code=js"></script>
+<div id="enhitokoto"><script>enhitokoto()</script></div>
+-->
+
+        </div>
+      </div>
+
+      
+      <!--noindex-->
+        <div class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+            
+            
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#项目分析"><span class="nav-number">1.</span> <span class="nav-text">项目分析</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#项目需求"><span class="nav-number">1.1.</span> <span class="nav-text">项目需求</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#项目思路"><span class="nav-number">1.2.</span> <span class="nav-text">项目思路</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#初步页面搭建"><span class="nav-number">2.</span> <span class="nav-text">初步页面搭建</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#数据获取"><span class="nav-number">3.</span> <span class="nav-text">数据获取</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#点名实现"><span class="nav-number">4.</span> <span class="nav-text">点名实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#日志实现"><span class="nav-number">5.</span> <span class="nav-text">日志实现</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#其他"><span class="nav-number">6.</span> <span class="nav-text">其他</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#程序打包"><span class="nav-number">7.</span> <span class="nav-text">程序打包</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装Pyinstaller"><span class="nav-number">7.1.</span> <span class="nav-text">安装Pyinstaller</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#总结"><span class="nav-number">8.</span> <span class="nav-text">总结</span></a></li></ol></div>
+            
+
+          </div>
+        </div>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+  
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" style=" text-align:center;">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-龍皓"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">true</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"> 站点字数合计:</i>
+    </span>
+    
+      <span class="post-meta-item-text">站点总字数：</span>
+    
+    <span title="站点总字数">169k</span>
+  
+  
+</div>
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+
+<div class="run_time" style=" text-align:center;">
+  <span id="timeDate">载入天数...</span><span id="times">载入时分秒...</span>
+  <script>
+    var now = new Date(); 
+    function createtime() { 
+        var grt= new Date("02/08/2020 00:00:00");//此处修改你的建站时间或者网站上线时间 
+        now.setTime(now.getTime()+250); 
+        days = (now - grt ) / 1000 / 60 / 60 / 24; dnum = Math.floor(days); 
+        hours = (now - grt ) / 1000 / 60 / 60 - (24 * dnum); hnum = Math.floor(hours); 
+        if(String(hnum).length ==1 ){hnum = "0" + hnum;} minutes = (now - grt ) / 1000 /60 - (24 * 60 * dnum) - (60 * hnum); 
+        mnum = Math.floor(minutes); if(String(mnum).length ==1 ){mnum = "0" + mnum;} 
+        seconds = (now - grt ) / 1000 - (24 * 60 * 60 * dnum) - (60 * 60 * hnum) - (60 * mnum); 
+        snum = Math.round(seconds); if(String(snum).length ==1 ){snum = "0" + snum;} 
+        document.getElementById("timeDate").innerHTML = "本站已安全运行 "+dnum+" 天 "; 
+        document.getElementById("times").innerHTML = hnum + " 小时 " + mnum + " 分 " + snum + " 秒"; 
+    } 
+    setInterval("createtime()",250);
+  </script>
+</div>
+        
+<div class="busuanzi-count" style=" text-align:center;">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-user"></i>
+    </span>
+    <span class="site-uv" title="总访客量">
+      <span class="busuanzi-value" id="busuanzi_value_site_uv"></span> 人
+    </span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+  
+
+  
+    <span class="post-meta-item-icon">
+      <i class="fa fa-eye"></i>
+    </span>
+    <span class="site-pv" title="总访问量">
+      <span class="busuanzi-value" id="busuanzi_value_site_pv"></span> 次
+    </span>
+  
+</div>
+
+
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+    
+
+    
+      <div id="needsharebutton-float">
+        <span class="btn">
+          <i class="fa fa-share-alt" aria-hidden="true"></i>
+        </span>
+      </div>
+    
+
+    
+
+    
+  </div>
+    <!-- badApplePlayer -->
+    <!---->
+      <!-- Your XlchPlayerKey -->
+      <!--<script>XlchKey="oMPfWoAPTn";</script>-->
+      <!-- font-awesome 4.2.0 -->
+      <!--<link href="http://lib.baomitu.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">-->
+      <!-- JQuery 2.2.4 -->
+      <!--<script src="http://lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script>-->
+      <!-- JQuery-mousewheel 3.1.9 -->
+      <!--<script src="http://lib.baomitu.com/jquery-mousewheel/3.1.9/jquery.mousewheel.min.js"></script>-->
+      <!-- Scrollbar -->
+      <!--<script src="http://static.badapple.top/BadApplePlayer/js/scrollbar.js"></script>-->
+      <!-- BadApplePlayer -->
+      <!--<script src="http://static.badapple.top/BadApplePlayer/Player.js"></script>-->
+    <!-- end-->
+    <!---->
+
+  
+
+<script>
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+  
+    
+    
+      
+    
+  
+  <script color="255,0,255" opacity="0.7" zindex="-1" count="140" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-nest@1.0.0/canvas-nest.min.js"></script>
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+
+
+
+  
+  
+    
+  
+  <script id="ribbon" size="300" alpha="0.1" zindex="-1" src="//cdn.jsdelivr.net/gh/theme-next/theme-next-canvas-ribbon@1/canvas-ribbon.js"></script>
+
+
+
+  
+
+
+
+  
+  <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+
+  
+  <script src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/fancyapps/fancybox@3/dist/jquery.fancybox.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/three-waves.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/canvas_lines.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-three@1/canvas_sphere.min.js"></script>
+
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-reading-progress@1/reading_progress.min.js"></script>
+
+
+  
+
+
+  <script src="/js/utils.js?v=7.1.1"></script>
+
+  <script src="/js/motion.js?v=7.1.1"></script>
+
+
+    <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+ 
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+ 
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+ 
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+ 
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+ 
+        if(result)$(this).text('复制成功')
+        else $(this).text('复制失败')
+ 
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+  
+  
+  
+  
+
+
+  <script src="/js/affix.js?v=7.1.1"></script>
+
+  <script src="/js/schemes/pisces.js?v=7.1.1"></script>
+
+
+
+
+  
+  <script src="/js/scrollspy.js?v=7.1.1"></script>
+<script src="/js/post-details.js?v=7.1.1"></script>
+
+
+
+  
+
+
+  <script src="/js/next-boot.js?v=7.1.1"></script>
+
+
+  
+
+  
+  <script src="/js/exturl.js?v=7.1.1"></script>
+
+
+  
+  
+  
+
+  
+
+  
+  
+  
+
+
+  
+  
+
+  
+
+<script src="//cdn.jsdelivr.net/npm/leancloud-storage@3/dist/av-min.js"></script>
+
+
+
+  
+
+<script src="//cdn.jsdelivr.net/npm/valine@1/dist/Valine.min.js"></script>
+
+<script>
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(function(item) {
+    return GUEST.indexOf(item) > -1;
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: true,
+    appId: 'aNpMMeQzVbcy6Dk67eEfNJ5D-gzGzoHsz',
+    appKey: 'VuAEHKniNpjDSidp3pwoVKWx',
+    placeholder: 'ヾ(≧O≦)〃嗷~ 把爱说出来！',
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: true,
+    lang: '' || 'zh-cn'
+  });
+</script>
+
+
+
+
+  
+
+
+  
+  <script>
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url).replace(/\/{2,}/g, '/');
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('5');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x"></i></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x"></i></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+    
+      <script type="text/x-mathjax-config">
+  
+    MathJax.Ajax.config.path['mhchem'] = '//cdnjs.cloudflare.com/ajax/libs/mathjax-mhchem/3.3.0';
+  
+
+  MathJax.Hub.Config({
+    tex2jax: {
+      inlineMath: [ ['$', '$'], ['\\(', '\\)'] ],
+      processEscapes: true,
+      skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    },
+    TeX: {
+      
+        extensions: ['[mhchem]/mhchem.js'],
+      
+      equationNumbers: {
+        autoNumber: 'AMS'
+      }
+    }
+  });
+  MathJax.Hub.Register.StartupHook('TeX Jax Ready', function() {
+    MathJax.InputJax.TeX.prefilterHooks.Add(function(data) {
+      if (data.display) {
+        var next = data.script.nextSibling;
+        while (next && next.nodeName.toLowerCase() === '#text') { next = next.nextSibling }
+        if (next && next.nodeName.toLowerCase() === 'br') { next.parentNode.removeChild(next) }
+      }
+    });
+  });
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for (i = 0; i < all.length; i += 1) {
+      document.getElementById(all[i].inputID + '-Frame').parentNode.className += ' has-jax';
+    }
+  });
+</script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+    
+  
+
+
+  
+<script>
+if ($('body').find('div.pdf').length) {
+  $.ajax({
+    type: 'GET',
+    url: '//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js',
+    dataType: 'script',
+    cache: true,
+    success: function() {
+      $('body').find('div.pdf').each(function(i, o) {
+        PDFObject.embed($(o).attr('target'), $(o), {
+          pdfOpenParams: {
+            navpanes: 0,
+            toolbar: 0,
+            statusbar: 0,
+            pagemode: 'thumbs',
+            view: 'FitH'
+          },
+          PDFJS_URL: '/lib/pdf/web/viewer.html',
+          height: $(o).attr('height') || '500px'
+        });
+      });
+    },
+  });
+}
+</script>
+
+
+  
+
+  
+
+  
+
+  
+  
+  
+    
+  
+  <script src="//cdn.jsdelivr.net/gh/theme-next/theme-next-needmoreshare2@1/needsharebutton.min.js"></script>
+  <script>
+    
+      pbOptions = {};
+      
+        pbOptions.iconStyle = "box";
+      
+        pbOptions.boxForm = "horizontal";
+      
+        pbOptions.position = "bottomCenter";
+      
+        pbOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-postbottom', pbOptions);
+    
+    
+      flOptions = {};
+      
+        flOptions.iconStyle = "box";
+      
+        flOptions.boxForm = "horizontal";
+      
+        flOptions.position = "middleRight";
+      
+        flOptions.networks = "Weibo,Wechat,Douban,QQZone,Twitter,Facebook";
+      
+      new needShareButton('#needsharebutton-float', flOptions);
+    
+  </script>
+
+
+  
+
+  
+
+  
+  
+  
+  <script src="/lib/bookmark/bookmark.min.js?v=1.0"></script>
+  <script>
+  
+    bookmark.scrollToMark('manual', "#更多");
+  
+  </script>
+
+
+    <style>
+    .copy-btn {
+      display: inline-block;
+      padding: 6px 12px;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 20px;
+      color: #333;
+      white-space: nowrap;
+      vertical-align: middle;
+      cursor: pointer;
+      background-color: #eee;
+      background-image: linear-gradient(#fcfcfc, #eee);
+      border: 1px solid #d5d5d5;
+      border-radius: 3px;
+      user-select: none;
+      outline: 0;
+    }
+ 
+    .highlight-wrap .copy-btn {
+      transition: opacity .3s ease-in-out;
+      opacity: 0;
+      padding: 2px 6px;
+      position: absolute;
+      right: 4px;
+      top: 8px;
+    }
+ 
+    .highlight-wrap:hover .copy-btn,
+    .highlight-wrap .copy-btn:focus {
+      opacity: 1
+    }
+ 
+    .highlight-wrap {
+      position: relative;
+    }
+  </style>
+ 
+  <script>
+    $('.highlight').each(function (i, e) {
+      var $wrap = $('<div>').addClass('highlight-wrap')
+      $(e).after($wrap)
+      $wrap.append($('<button>').addClass('copy-btn').append('复制').on('click', function (e) {
+        var code = $(this).parent().find('.code').find('.line').map(function (i, e) {
+          return $(e).text()
+        }).toArray().join('\n')
+        var ta = document.createElement('textarea')
+        document.body.appendChild(ta)
+        ta.style.position = 'absolute'
+        ta.style.top = '0px'
+        ta.style.left = '0px'
+        ta.value = code
+        ta.select()
+        ta.focus()
+        var result = document.execCommand('copy')
+        document.body.removeChild(ta)
+ 
+        if(result)$(this).text('复制成功')
+        else $(this).text('复制失败')
+ 
+        $(this).blur()
+      })).on('mouseleave', function (e) {
+        var $b = $(this).find('.copy-btn')
+        setTimeout(function () {
+          $b.text('复制')
+        }, 300)
+      }).append(e)
+    })
+  </script>
+  
+  
+
+  
+
+    <!-- 代码块复制功能 -->
+  <script type="text/javascript" src="/js/src/clipboard.min.js"></script>  
+  <script type="text/javascript" src="/js/src/clipboard-use.js"></script>
+</body>
+</html>
+
